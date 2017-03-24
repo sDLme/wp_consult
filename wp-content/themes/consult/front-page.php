@@ -40,19 +40,6 @@
             <?php   } ?>
         </div>
         </div>
-
-        <!--<div class="carousel-clients">
-            <div class="carousel-client-item"><img src="images/slide-client-code-item.png"></div>
-            <div class="carousel-client-item"><img src="images/slide-client-video.png"></div>
-            <div class="carousel-client-item"><img src="images/slide-client-audio.png"></div>
-            <div class="carousel-client-item"><img src="images/slide-client-grafic.png"></div>
-            <div class="carousel-client-item"><img src="images/slide-client-photo.png"></div>
-            <div class="carousel-client-item"><img src="images/slide-client-code-item.png"></div>
-            <div class="carousel-client-item"><img src="images/slide-client-audio.png"></div>
-            <div class="carousel-client-item"><img src="images/slide-client-audio.png"></div>
-            <div class="carousel-client-item"><img src="images/slide-client-grafic.png"></div>
-            <div class="carousel-client-item"><img src="images/slide-client-photo.png"></div>
-        </div>-->
     </div>
 </section>
 <!--END ABOUT-->
@@ -61,30 +48,26 @@
 <section class="section-pd section-bg-feach">
     <div class="container">
         <h3 class="section-title">our features</h3>
-        <ul class="feature-list">
-            <li class="feature-list-item">
-                <h4 class="title title-bold">24 hour support</h4>
-                <p class="description"> containing Lorem Ipsum passages,
-                    and more recently with desktop publishing software like Aldus PageMaker including </p>
+        <?php
+        $args = array(
+            'post_type' => 'consult_features',
+            'post__in'=> array(72,70,62,74,68));
+        $servisloop = new WP_Query( $args);
+        ?>
+        <ul class="feature-list row">
+            <?php while ($servisloop->have_posts()) :
+            $servisloop->the_post(); ?>
+            <li class="feature-list-item col-md-4">
+                    <h4 class="title title-bold"><?php the_title(); ?></h4>
+                    <p class="description"><?php the_excerpt(); ?></p>
             </li>
-            <li class="feature-list-item">
-                <h4 class="title title-bold">Business boosting</h4>
-                <p class="description"> established fact that a reader will be distracted by
-                    the readable content of a page when looking </p>
-            </li>
-            <li class="feature-list-item">
-                <h4 class="title title-bold">FUll security</h4>
-                <p class="description"> Lorem Ipsum is simply dummy text of the printing and
-                    typesetting
-                    industry.
-                    Lorem Ipsum has been the industry's </p>
-            </li>
-            <li class="feature-list-item">
-                <h4 class="title title-bold">Creative process</h4>
-                <p class="description">There are many variations of passages of Ipsum avail
-                    able, but the majority have suffered alteration.</p>
-            </li>
+            <?php endwhile; wp_reset_postdata(); ?>
         </ul>
+        <?php
+        $url = "http://consult.loc/features/" ;
+        $page_ID = url_to_postid($url);
+        ?>
+        <div class="center-btn"><a  href="<?php the_permalink($page_ID); ?>" class="btn-prime btn-prime-center">Full feachurs</a></div>
         <div class="contact-us-area d-flex justify-content-between align-items-center">
             <p class="contact-description ">If you want to boost your business Contact us</p>
             <a href="mailto:info@consultplus.com?subject=Business question" class="btn-prime">Boost your business</a>
@@ -121,7 +104,7 @@
                 </div>
             </li>
         </ul>
-        <button class="btn-prime btn-prime-center">Full Projects</button>
+        <div class="center-btn"><a class="btn-prime btn-prime-center">Full Projects</a></div>
     </div>
 </section>
 <!--END PORTFOLIO-->
@@ -148,7 +131,11 @@
                 <?php endwhile; wp_reset_postdata(); ?>
             </li>
         </ul>
-        <button class="btn-prime btn-prime-center">Full Services</button>
+        <?php
+        $url = "http://consult.loc/services/" ;
+        $page_ID = url_to_postid($url);
+        ?>
+        <div class="center-btn"><a  href="<?php the_permalink($page_ID); ?>" class="btn-prime btn-prime-center">Full Services</a></div>
     </div>
 </section>
 <!--END SERVISES-->

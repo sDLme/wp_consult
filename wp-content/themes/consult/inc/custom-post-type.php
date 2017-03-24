@@ -64,3 +64,32 @@ function create_testimonial_type() {
 }
 add_action( 'init', 'create_testimonial_type' );
 
+function create_features_type() {
+    $args=array(
+        $labels = array(
+            'name' => __( 'feature' ),
+            'singular_name' => __( 'featur' ),
+            'menu_name'          => _x( 'Features', 'admin menu' ),
+            'name_admin_bar'     => _x( 'Features', 'add new on admin bar' ),
+            'add_new'            => _x( 'Add New', 'feature' ),
+            'add_new_item'       => __( 'Add New Feature' ),
+            'new_item'           => __( 'New Feature' ),
+            'edit_item'          => __( 'Edit Feature' ),
+            'view_item'          => __( 'View Feature' ),
+            'all_items'          => __( 'All Features' ),
+            'search_items'       => __( 'Search Feature'),
+            'parent_item_colon'  => __( 'Parent Feature:' ),
+            'not_found'          => __( 'No Features found.' ),
+            'not_found_in_trash' => __( 'No Feature found in Trash.' )
+        ),
+        'labels'             => $labels,
+        'description'        => __( 'Description.' ),
+        'public' => true,
+        'rewrite' => array('slug' => 'features'),
+        'supports' => array( 'title','editor','author','thumbnail','excerpt','trackbacks','custom-fields','comments','revisions','page-attributes','post-formats' )
+    );
+    register_post_type( 'consult_features', $args );
+}
+add_action( 'init', 'create_features_type' );
+
+
