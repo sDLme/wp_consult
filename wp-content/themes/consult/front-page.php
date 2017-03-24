@@ -28,8 +28,20 @@
                     </div>
                 </div>
             <?php endwhile; ?>
+
         <?php endif; wp_reset_postdata(); ?>
+
         <div class="carousel-clients">
+            <?php $slider = CFS()->get('clients-slider', 11); ?>
+            <?php foreach ($slider as $slide) { ?>
+                <div class="carousel-client-item">
+                    <img src="<?php echo $slide['client_img']; ?>" alt="">
+                </div>
+            <?php   } ?>
+        </div>
+        </div>
+
+        <!--<div class="carousel-clients">
             <div class="carousel-client-item"><img src="images/slide-client-code-item.png"></div>
             <div class="carousel-client-item"><img src="images/slide-client-video.png"></div>
             <div class="carousel-client-item"><img src="images/slide-client-audio.png"></div>
@@ -40,7 +52,7 @@
             <div class="carousel-client-item"><img src="images/slide-client-audio.png"></div>
             <div class="carousel-client-item"><img src="images/slide-client-grafic.png"></div>
             <div class="carousel-client-item"><img src="images/slide-client-photo.png"></div>
-        </div>
+        </div>-->
     </div>
 </section>
 <!--END ABOUT-->
@@ -157,28 +169,7 @@
                     <span <?php post_class('slide-testimon-item-name'); ?>><?php  echo get_post_meta($post->ID, 'client_name', true);?></span>
                     <span <?php post_class('slide-testimon-item-meta'); ?>><?php  echo get_post_meta($post->ID, 'client_position', true);?></span>
                 </div>
-               <!-- <div class="slide-testimon-item">
-                    <p class="description description-light">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-                        been
-                        the industry's standard dummy text ever since the 1500s, when an unknown printer took a
-                        galley
-                        of type and scrambled it to make a type speci
-                        book. It has survived not only five centuries, but also the leap into electronic
-                        typesetting.</p>
-                    <span class="slide-testimon-item-name">Client Name</span>
-                    <span class="slide-testimon-item-meta">Designation</span>
-                </div>
-                <div class="slide-testimon-item">
-                    <p class="description description-light">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-                        been
-                        the industry's standard dummy text ever since the 1500s, when an unknown printer took a
-                        galley
-                        of type and scrambled it to make a type speci
-                        book. It has survived not only five centuries, but also the leap into electronic
-                        typesetting.</p>
-                    <span class="slide-testimon-item-name">Client Name</span>
-                    <span class="slide-testimon-item-meta">Designation</span>
-                </div>-->
+
                 <?php endwhile; wp_reset_postdata()?>
             </div>
         </div>

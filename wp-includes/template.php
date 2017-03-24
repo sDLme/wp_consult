@@ -383,7 +383,7 @@ function get_front_page_template() {
  * An example of this is:
  *
  * 1. page-templates/full-width.php
- * 2. page-about.php
+ * 2. page.php
  * 3. page-4.php
  * 4. page.php
  *
