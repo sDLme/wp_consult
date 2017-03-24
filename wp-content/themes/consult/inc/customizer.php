@@ -7,7 +7,7 @@
  */
 function consult_customize_register($wp_customize)
 {
-    ///возможность редактировать секцию
+///edit section contact us
     $wp_customize->add_panel( 'Contact', array(
         'title' => __( 'Contact' ),
         'description' => __( 'Text in contact us section', 'consult' ),
@@ -80,6 +80,86 @@ function consult_customize_register($wp_customize)
         'settings' => 'consult-contact-career',
         'type' => 'input'
     )));
+
+///social-links in footer
+    $wp_customize->add_panel( 'Social-link-footer', array(
+        'title' => __( 'Social-link' ),
+        'description' => __( 'Social link for footer', 'consult' ),
+    ) );
+    $wp_customize->add_section( 'consult_social_links' , array(
+        'title'      => __( 'Social links', 'consult' ),
+        'priority'   => 31,
+    ) );
+
+    $wp_customize->add_setting( 'social_links_facebook' , array(
+        'default'     => '',
+        'transport'   => 'refresh',
+    ) );
+    $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'social_links_facebook', array(
+        'label'        => __( 'Facebook', 'consult' ),
+        'section'    => 'consult_social_links',
+        'settings'   => 'social_links_facebook',
+    ) ) );
+
+
+    $wp_customize->add_setting( 'social_links_twitter' , array(
+        'default'     => '',
+        'transport'   => 'refresh',
+    ) );
+    $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'social_links_twitter', array(
+        'label'        => __( 'Twitter', 'consult' ),
+        'section'    => 'consult_social_links',
+        'settings'   => 'social_links_twitter',
+    ) ) );
+
+    $wp_customize->add_setting( 'social_links_instagram' , array(
+        'default'     => '',
+        'transport'   => 'refresh',
+    ) );
+    $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'social_links_instagram', array(
+        'label'        => __( 'Instagram', 'consult' ),
+        'section'    => 'consult_social_links',
+        'settings'   => 'social_links_instagram',
+    ) ) );
+
+    $wp_customize->add_setting( 'social_links_linkedin' , array(
+        'default'     => '',
+        'transport'   => 'refresh',
+    ) );
+    $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'social_links_linkedin', array(
+        'label'        => __( 'Linkedin', 'consult' ),
+        'section'    => 'consult_social_links',
+        'settings'   => 'social_links_linkedin',
+    ) ) );
+
+    $wp_customize->add_setting( 'social_links_google' , array(
+        'default'     => '',
+        'transport'   => 'refresh',
+    ) );
+    $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'social_links_google', array(
+        'label'        => __( 'Google', 'consult' ),
+        'section'    => 'consult_social_links',
+        'settings'   => 'social_links_google',
+    ) ) );
+
+
+//Choice of post in servise section
+    $wp_customize->add_section( 'services_posts' , array(
+        'title'      => __( 'Services posts', 'consult' ),
+        'priority'   => 31,
+    ) );
+    $wp_customize->add_setting( 'services_posts-edit' , array(
+        'default'     => '',
+        'transport'   => 'refresh',
+    ) );
+    $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'services_posts-edit', array(
+        'label'        => __( 'Services-post', 'consult' ),
+        'section'    => 'services_posts',
+        'settings'   => 'services_posts-edit',
+        'type'     => 'select',
+        )
+    ));
+
 }
 
 add_action( 'customize_register', 'consult_customize_register' );

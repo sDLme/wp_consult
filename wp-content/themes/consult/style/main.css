@@ -254,12 +254,14 @@ p {
   text-align: center;
   text-transform: uppercase;
   font-size: 13px;
-  border: none;
+  border: 1px solid transparent;
   background: #16d428;
   color: #fff;
   cursor: pointer;
   outline: none; }
   .btn-prime:hover {
+    border: 1px solid #16d428;
+    background: transparent;
     color: #838b8c; }
   .btn-prime-center {
     display: inline-block;

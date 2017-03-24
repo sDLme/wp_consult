@@ -11,7 +11,9 @@
         <div class="row">
             <div class="foot-logo col-12 col-md-4 col-lg-3 d-flex align-items-center">
                 <div class="foot-img-logo">
-                    <img src="images/consult-logo.png" alt="">
+                    <?php
+                    if ( function_exists( 'the_custom_logo' ) )
+                        the_custom_logo();?>
                 </div>
             </div>
             <div class="col-6 col-sm-6 col-md-4 col-lg-2">
@@ -53,11 +55,11 @@
 <div class="footer-foo row d-flex justify-content-between align-items-center">
     <p class="copy">Copyright © 2016 Consultplus theme.</p>
     <ul class="social-list d-flex justify-content-between">
-        <li class="social-list-facebook"><a href="#">Facebook</a></li>
-        <li class="social-list-twitter"><a href="#">twitter</a></li>
-        <li class="social-list-instagram "><a href="#">instagram</a></li>
-        <li class="social-list-linkedin"><a href="#">linkedin</a></li>
-        <li class="social-list-google"><a href="#">google +</a></li>
+        <li class="social-list-facebook"><a href="<?php echo get_theme_mod('social_links_facebook'); ?>">Facebook</a></li>
+        <li class="social-list-twitter"><a href="<?php echo get_theme_mod('social_links_twitter'); ?>">twitter</a></li>
+        <li class="social-list-instagram"><a href="<?php echo get_theme_mod('social_links_instagram'); ?>">instagram</a></li>
+        <li class="social-list-linkedin"><a href="<?php echo get_theme_mod('social_links_linkedin'); ?>">linkedin</a></li>
+        <li class="social-list-google"><a href="<?php echo get_theme_mod('social_links_google'); ?>">google +</a></li>
     </ul>
 </div>
 <!-- END SECTION FOOTER -->
