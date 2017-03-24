@@ -42,8 +42,8 @@
                         ));
                     ?>
                     <div class="nav-info d-flex justify-content-around align-items-start">
-                        <a href="tel:+91 5685 6664 555" class="phone">+91 5685 6664 555</a>
-                        <a href="mailto:info@consultplus.com?subject=Business question" class="head-contact-link"></a>
+                        <a href="<?php echo get_theme_mod('consult-contact-call'); ?>" class="phone"><?php echo get_theme_mod('consult-contact-call-label'); ?></a>
+                        <a href="<?php echo get_theme_mod('consult-contact-email'); ?>" class="head-contact-link"></a>
                     </div></div>
             </div>
         </header>

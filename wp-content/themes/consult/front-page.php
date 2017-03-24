@@ -70,7 +70,11 @@
         <div class="center-btn"><a  href="<?php the_permalink($page_ID); ?>" class="btn-prime btn-prime-center">Full feachurs</a></div>
         <div class="contact-us-area d-flex justify-content-between align-items-center">
             <p class="contact-description ">If you want to boost your business Contact us</p>
-            <a href="mailto:info@consultplus.com?subject=Business question" class="btn-prime">Boost your business</a>
+            <?php
+            $url = "http://consult.loc/contact/" ;
+            $page_ID = url_to_postid($url);
+            ?>
+            <a href="<?php the_permalink($page_ID); ?>" class="btn-prime">Boost your business</a>
         </div>
     </div>
 </section>
@@ -80,17 +84,25 @@
 <section class="section-bg section-pd section-pd-bottom">
     <div class="container">
         <h3 class="section-title">Projects</h3>
+        <?php
+        $args = array(
+            'post_type' => 'consult_projects',
+            'post__in'=> array(89, 86));
+        $servisloop = new WP_Query($args);
+        ?>
         <ul class="project-list row">
+            <?php while ($servisloop->have_posts()) :
+            $servisloop->the_post(); ?>
             <li class="project-list-item col-md-4">
                 <p class="meta-title">Banking</p>
-                <img src="images/progect-item-one.jpg" alt="">
+
                 <div class="project-description">
-                    <h4 class="title title-light title-trasf title-bold">Project Heading</h4>
-                    <p class="description description-light">Popularised in the 1960s with the release
-                        Letraset sheets containing.</p>
+                    <h4 class="title title-light title-trasf title-bold"><?php the_title(); ?></h4>
+                    <p class="description description-light"><?php the_excerpt(); ?></p>
                 </div>
+                <?php endwhile; wp_reset_postdata(); ?>
             </li>
-            <li class="project-list-item col-md-8">
+            <!--<li class="project-list-item col-md-8">
                 <p class="meta-title">Real Estate</p>
                 <ul class="project-img-slide">
                     <li><img src="images/progect-item-two.jpg" alt=""></li>
@@ -102,9 +114,13 @@
                     <p class="description">Popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
                         passages. fact that a reader will be distracted by the readable of a page when.</p>
                 </div>
-            </li>
+            </li>-->
         </ul>
-        <div class="center-btn"><a class="btn-prime btn-prime-center">Full Projects</a></div>
+        <?php
+        $url = "http://consult.loc/project/" ;
+        $page_ID = url_to_postid($url);
+        ?>
+        <div class="center-btn"><a href="<?php the_permalink($page_ID); ?>" class="btn-prime btn-prime-center">Full Projects</a></div>
     </div>
 </section>
 <!--END PORTFOLIO-->
@@ -116,7 +132,8 @@
         <?php
         $args = array(
             'post_type' => 'consult_services',
-            'post__in'=> array(44,46,48));
+            'post__in'=> array(44,46,48)
+        );
         $servisloop = new WP_Query( $args);
         ?>
         <ul class="services-list row">
@@ -124,7 +141,9 @@
             $servisloop->the_post(); ?>
             <li class="services-list-item-wrap col-md-4">
                 <div class="services-list-item">
-                    <div class="thumbnail-wrapp"><?php the_post_thumbnail()?></div><!-- i dont know about this img, important or not. I made important -->
+                    <div class="thumbnail-wrapp">
+                        <?php the_post_thumbnail()?>
+                    </div><!-- i dont know about this img, important or not. I made important -->
                     <h4 class="title title-bold title-trasf"><?php the_title(); ?></h4>
                     <p class="description"><?php the_excerpt(); ?></p>
                 </div>
@@ -135,8 +154,10 @@
         $url = "http://consult.loc/services/" ;
         $page_ID = url_to_postid($url);
         ?>
-        <div class="center-btn"><a  href="<?php the_permalink($page_ID); ?>" class="btn-prime btn-prime-center">Full Services</a></div>
-    </div>
+        <div class="center-btn">
+            <a  href="<?php the_permalink($page_ID); ?>" class="btn-prime btn-prime-center">Full Services</a>
+        </div>
+        </div>
 </section>
 <!--END SERVISES-->
 <!--TESTIMONIAL-->
@@ -200,19 +221,19 @@
             <li class="contact-list-item-wrap col-md-4">
                 <div class="contact-list-item">
                     <h4 class="title title-bold">Email</h4>
-                    <a href="mailto:info@consultplus.com?subject=Business question" class="contact-atr">info@consultplus.com</a>
+                    <a href="<?php echo get_theme_mod('consult-contact-email'); ?>" class="contact-atr"><?php echo get_theme_mod('consult-contact-email-label'); ?></a>
                 </div>
             </li>
             <li class="contact-list-item-wrap col-md-4 ">
                 <div class="contact-list-item">
                     <h4 class="title title-bold">Call Us</h4>
-                    <a href="tel:+91 8879 8767 990" class="contact-atr">+91 8879 8767 990</a>
+                    <a href="<?php echo get_theme_mod('consult-contact-call'); ?>" class="contact-atr"><?php echo get_theme_mod('consult-contact-call-label'); ?></a>
                 </div>
             </li>
             <li class="contact-list-item-wrap col-md-4">
                 <div class="contact-list-item">
                     <h4 class="title title-bold">Career</h4>
-                    <a href="mailto:consult@career.com?subject=Career question" class="contact-atr">consult@career.com</a>
+                    <a href="<?php echo get_theme_mod('consult-contact-career'); ?>" class="contact-atr"><?php echo get_theme_mod('consult-contact-career-label'); ?></a>
                 </div>
             </li>
         </ul>

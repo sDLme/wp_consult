@@ -54,3 +54,7 @@ function my_add_excerpts_to_pages() {
  * Custom template tags for this theme.
  */
 require get_template_directory() . '/inc/custom-post-type.php';
+/**
+ * Customaizer tags for this theme.
+ */
+require get_template_directory() . '/inc/customizer.php';

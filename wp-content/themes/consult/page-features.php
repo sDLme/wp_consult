@@ -5,7 +5,7 @@
  */
 ?>
 <?php get_header(); ?>
-<section class="section-pd section-bg-feach">
+<section class="section-pd section-bg-feach section-pd-bottom">
     <div class="container">
         <h3 class="section-title"><?php the_title(); ?></h3>
 
