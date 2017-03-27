@@ -261,7 +261,7 @@ p {
   outline: none; }
   .btn-prime:hover {
     border: 1px solid #16d428;
-    background: transparent;
+    background: #323334;
     color: #838b8c; }
   .btn-prime-center {
     display: inline-block;
@@ -597,7 +597,7 @@ p {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
             flex-direction: column; }
-    .project-list-item:nth-child(even) .meta-title {
+    .project-list-item .meta-title {
       z-index: 2; }
     .project-list-item:nth-child(even) .project-description {
       border: 1px solid #dae5e8; }
@@ -776,7 +776,7 @@ p {
     margin-bottom: 40px; } }
 
 .foot-nav-item,
-.foot-industary-item {
+.page_item {
   line-height: 30px;
   font-size: 13px;
   text-transform: uppercase; }
@@ -882,3 +882,15 @@ p {
       margin-left: 5px;
       margin-right: 5px;
       font-size: 10px; } }
+
+
+/*
+*Footer form
+*/
+.wpcf7-form > p {
+  display: flex;
+  margin: 40px 0;
+}
+.email-439 {
+  display: flex;
+}

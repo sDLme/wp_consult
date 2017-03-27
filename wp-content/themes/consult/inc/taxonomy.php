@@ -7,23 +7,23 @@
  */?>
 <?php
 // hook into the init action and call create_book_taxonomies when it fires
-add_action( 'init', 'create_book_taxonomies', 0 );
+add_action( 'init', 'create_page_taxonomies', 0 );
 
 // create two taxonomies, genres and writers for the post type "book"
-function create_book_taxonomies() {
+function create_page_taxonomies() {
     // Add new taxonomy, make it hierarchical (like categories)
     $labels = array(
-        'name'              => _x( 'Genres', 'taxonomy general name', 'textdomain' ),
-        'singular_name'     => _x( 'Genre', 'taxonomy singular name', 'textdomain' ),
-        'search_items'      => __( 'Search Genres', 'textdomain' ),
-        'all_items'         => __( 'All Genres', 'textdomain' ),
-        'parent_item'       => __( 'Parent Genre', 'textdomain' ),
-        'parent_item_colon' => __( 'Parent Genre:', 'textdomain' ),
-        'edit_item'         => __( 'Edit Genre', 'textdomain' ),
-        'update_item'       => __( 'Update Genre', 'textdomain' ),
-        'add_new_item'      => __( 'Add New Genre', 'textdomain' ),
-        'new_item_name'     => __( 'New Genre Name', 'textdomain' ),
-        'menu_name'         => __( 'Genre', 'textdomain' ),
+        'name'              => _x( 'Sup-page', 'taxonomy general name', 'consult' ),
+        'singular_name'     => _x( 'Sup-page', 'taxonomy singular name', 'consult' ),
+        'search_items'      => __( 'Search Sup-page', 'consult' ),
+        'all_items'         => __( 'All Sup-page', 'consult' ),
+        'parent_item'       => __( 'Parent Sup-page', 'consult' ),
+        'parent_item_colon' => __( 'Parent Sup-page:', 'consult' ),
+        'edit_item'         => __( 'Edit Sup-page', 'consult' ),
+        'update_item'       => __( 'Update Sup-page', 'consult' ),
+        'add_new_item'      => __( 'Add New Sup-page', 'consult' ),
+        'new_item_name'     => __( 'New Sup-page Name', 'consult' ),
+        'menu_name'         => __( 'Sup-page', 'consult' ),
     );
 
     $args = array(
@@ -32,41 +32,38 @@ function create_book_taxonomies() {
         'show_ui'           => true,
         'show_admin_column' => true,
         'query_var'         => true,
-        'rewrite'           => array( 'slug' => 'genre' ),
+        'rewrite'           => array( 'slug' => 'consult' ),
     );
 
-    register_taxonomy( 'genre', array( 'book' ), $args );
+    register_taxonomy( 'Sup-page', array( 'page' ), $args );
+};
 
-    // Add new taxonomy, NOT hierarchical (like tags)
+add_action( 'init', 'create_project_taxonomies', 0 );
+function create_project_taxonomies() {
+    // Add new taxonomy, make it hierarchical (like categories)
     $labels = array(
-        'name'                       => _x( 'Writers', 'taxonomy general name', 'textdomain' ),
-        'singular_name'              => _x( 'Writer', 'taxonomy singular name', 'textdomain' ),
-        'search_items'               => __( 'Search Writers', 'textdomain' ),
-        'popular_items'              => __( 'Popular Writers', 'textdomain' ),
-        'all_items'                  => __( 'All Writers', 'textdomain' ),
-        'parent_item'                => null,
-        'parent_item_colon'          => null,
-        'edit_item'                  => __( 'Edit Writer', 'textdomain' ),
-        'update_item'                => __( 'Update Writer', 'textdomain' ),
-        'add_new_item'               => __( 'Add New Writer', 'textdomain' ),
-        'new_item_name'              => __( 'New Writer Name', 'textdomain' ),
-        'separate_items_with_commas' => __( 'Separate writers with commas', 'textdomain' ),
-        'add_or_remove_items'        => __( 'Add or remove writers', 'textdomain' ),
-        'choose_from_most_used'      => __( 'Choose from the most used writers', 'textdomain' ),
-        'not_found'                  => __( 'No writers found.', 'textdomain' ),
-        'menu_name'                  => __( 'Writers', 'textdomain' ),
+        'name'              => _x( 'project', 'taxonomy general name', 'consult' ),
+        'singular_name'     => _x( 'project', 'taxonomy singular name', 'consult' ),
+        'search_items'      => __( 'Search project', 'consult' ),
+        'all_items'         => __( 'All project', 'consult' ),
+        'parent_item'       => __( 'Parent project', 'consult' ),
+        'parent_item_colon' => __( 'Parent project:', 'consult' ),
+        'edit_item'         => __( 'Edit project', 'consult' ),
+        'update_item'       => __( 'Update project', 'consult' ),
+        'add_new_item'      => __( 'Add New project', 'consult' ),
+        'new_item_name'     => __( 'New project Name', 'consult' ),
+        'menu_name'         => __( 'projects', 'consult' ),
     );
 
     $args = array(
-        'hierarchical'          => false,
-        'labels'                => $labels,
-        'show_ui'               => true,
-        'show_admin_column'     => true,
-        'update_count_callback' => '_update_post_term_count',
-        'query_var'             => true,
-        'rewrite'               => array( 'slug' => 'writer' ),
+        'hierarchical'      => true,
+        'labels'            => $labels,
+        'show_ui'           => true,
+        'show_admin_column' => true,
+        'query_var'         => true,
+        'rewrite'           => array( 'slug' => 'Sup-page' ),
     );
 
-    register_taxonomy( 'writer', 'book', $args );
+    register_taxonomy( 'project', array( 'consult_projects' ), $args );
 }
 ?>

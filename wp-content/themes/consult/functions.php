@@ -50,11 +50,20 @@ function my_add_excerpts_to_pages() {
 	     add_post_type_support( 'page', 'excerpt' );
 	}
 
+
 /**
  * Custom template tags for this theme.
  */
 require get_template_directory() . '/inc/custom-post-type.php';
 /**
+ * Custom taxonomy for this theme.
+ */
+require get_template_directory() . '/inc/taxonomy.php';
+/**
  * Customaizer tags for this theme.
  */
 require get_template_directory() . '/inc/customizer.php';
+/**
+ * Widgets tags for this theme.
+ */
+require get_template_directory() . '/inc/widgets.php';

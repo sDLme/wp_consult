@@ -5,6 +5,7 @@
 ?>
 <?php get_header(); ?>
 
+
 <!-- END INTRO-->
 <!--ABOUT-->
 <section class="section-bg section-pd section-pd-bottom">
@@ -63,11 +64,7 @@
             </li>
             <?php endwhile; wp_reset_postdata(); ?>
         </ul>
-        <?php
-        $url = "http://consult.loc/features/" ;
-        $page_ID = url_to_postid($url);
-        ?>
-        <div class="center-btn"><a  href="<?php the_permalink($page_ID); ?>" class="btn-prime btn-prime-center">Full feachurs</a></div>
+        <div class="center-btn"><a  href="/features" class="btn-prime btn-prime-center">Full feachurs</a></div>
         <div class="contact-us-area d-flex justify-content-between align-items-center">
             <p class="contact-description ">If you want to boost your business Contact us</p>
             <?php
@@ -85,42 +82,42 @@
     <div class="container">
         <h3 class="section-title">Projects</h3>
         <?php
+        $counter = 0;
         $args = array(
+            'order' => 'ASC',
             'post_type' => 'consult_projects',
             'post__in'=> array(89, 86));
-        $servisloop = new WP_Query($args);
+        $projectsloop = new WP_Query($args);
         ?>
         <ul class="project-list row">
-            <?php while ($servisloop->have_posts()) :
-            $servisloop->the_post(); ?>
-            <li class="project-list-item col-md-4">
-                <p class="meta-title">Banking</p>
+            <?php while ($projectsloop->have_posts()) :
+            $projectsloop->the_post();
+            $counter++;
+            if($counter ===1) { ?>
+                <li class="project-list-item col-md-4">
+           <?php }
+           else { ?>
+               <li class="project-list-item col-md-8">
+          <?php  }?>
 
+                <p class="meta-title"><?php ; ?></p>
+                <ul class="project-img-slide">
+                    <?php if (has_post_thumbnail() ) : echo  the_post_thumbnail() ;?>
+                    <?php else : ;?>
+                        <?php $projectslider = CFS()->get('project_slid', 89); ?>
+                        <?php foreach ($projectslider as $slid) { ?>
+                            <li><img src="<?php echo $slid['slider_img']; ?>" alt=""></li>
+                        <?php }?>
+                    <?php endif ;?>
+                </ul>
                 <div class="project-description">
                     <h4 class="title title-light title-trasf title-bold"><?php the_title(); ?></h4>
                     <p class="description description-light"><?php the_excerpt(); ?></p>
                 </div>
                 <?php endwhile; wp_reset_postdata(); ?>
             </li>
-            <!--<li class="project-list-item col-md-8">
-                <p class="meta-title">Real Estate</p>
-                <ul class="project-img-slide">
-                    <li><img src="images/progect-item-two.jpg" alt=""></li>
-                    <li><img src="images/progect-item-two.jpg" alt=""></li>
-                    <li><img src="images/progect-item-two.jpg" alt=""></li>
-                </ul>
-                <div class="project-description">
-                    <h4 class="title title-trasf title-bold">Project Heading</h4>
-                    <p class="description">Popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
-                        passages. fact that a reader will be distracted by the readable of a page when.</p>
-                </div>
-            </li>-->
         </ul>
-        <?php
-        $url = "http://consult.loc/project/" ;
-        $page_ID = url_to_postid($url);
-        ?>
-        <div class="center-btn"><a href="<?php the_permalink($page_ID); ?>" class="btn-prime btn-prime-center">Full Projects</a></div>
+        <div class="center-btn"><a href="/project" class="btn-prime btn-prime-center">Full Projects</a></div>
     </div>
 </section>
 <!--END PORTFOLIO-->
@@ -143,27 +140,23 @@
                 <div class="services-list-item">
                     <div class="thumbnail-wrapp">
                         <?php the_post_thumbnail()?>
-                    </div><!-- i dont know about this img, important or not. I made important -->
+                    </div>
                     <h4 class="title title-bold title-trasf"><?php the_title(); ?></h4>
                     <p class="description"><?php the_excerpt(); ?></p>
                 </div>
                 <?php endwhile; wp_reset_postdata(); ?>
             </li>
         </ul>
-        <?php
-        $url = "http://consult.loc/services/" ;
-        $page_ID = url_to_postid($url);
-        ?>
         <div class="center-btn">
-            <a  href="<?php the_permalink($page_ID); ?>" class="btn-prime btn-prime-center">Full Services</a>
+            <a  href="/services" class="btn-prime btn-prime-center">Full Services</a>
         </div>
         </div>
 </section>
-<!--END SERVISES-->
+<!--END SERVICES-->
 <!--TESTIMONIAL-->
 <section class="section-bg-test-col">
     <div class="container test-wrapp">
-        <h3 class="section-title site-title-light">Testimonial</h3>
+        <h3 class="section-title site-title-light"><?php echo get_theme_mod('testimonial_title', 'TESTIMONIAL'); ?></h3>
         <div class="slide-testimon-wrap">
             <?php
             $args = array('post_type' => 'consult_testimonial', 'posts_per_page' => 3);
@@ -188,26 +181,24 @@
 <section class="section-bg-blog section-pd section-pd-bottom">
     <div class="container">
         <h3 class="section-title">Blog</h3>
+        <?php
+        $args = array('post_type' => 'post',  'order' => 'ASC', 'posts_per_page' => 2);
+        $loop = new WP_Query($args); ?>
         <ul class="blog-list row no-gutters">
-            <li class="blog-list-item col-lg-6 d-flex">
-                <div class="blog-img-wrap">
-                    <img src="images/blog-list-item-one.jpg" alt="">
-                </div>
-                <div class="blog-content">
-                    <span class="blog-item-date">February 22, 2016 </span>
-                    <h4 class="title title-bold title-trasf">Blog Heading here</h4>
-                    <p class="description">Established fact that a reader will be distracted by the readable of a
-                        page when looking at its layout...</p>
-                </div>
-            </li>
+            <?php if ($loop->have_posts()): ?>
+            <?php while ( $loop->have_posts() ) : $loop->the_post();?>
             <li class="blog-list-item col-lg-6">
+                <div class="blog-img-wrap">
+                    <?php if (has_post_thumbnail() ) : echo  the_post_thumbnail() ;?>
+                   <?php endif; ?>
+                </div>
                 <div class="blog-content">
                     <span class="blog-item-date">February 22, 2016 </span>
-                    <h4 class="title title-bold title-trasf">Blog Heading here</h4>
-                    <p class="description">Established fact that a reader will be distracted by the readable of a
-                        page when looking at its layout...</p>
+                    <h4 class="title title-bold title-trasf"><?php the_title(); ?></h4>
+                    <p class="description"><?php the_excerpt(); ?></p>
                 </div>
             </li>
+                <?php endwhile; endif; wp_reset_postdata() ?>
         </ul>
         <button class="btn-prime btn-prime-center">Full Blog</button>
     </div>
@@ -227,13 +218,13 @@
             <li class="contact-list-item-wrap col-md-4 ">
                 <div class="contact-list-item">
                     <h4 class="title title-bold">Call Us</h4>
-                    <a href="<?php echo get_theme_mod('consult-contact-call'); ?>" class="contact-atr"><?php echo get_theme_mod('consult-contact-call-label'); ?></a>
+                    <a href="tel:<?php echo get_theme_mod('consult-contact-call'); ?>" class="contact-atr"><?php echo get_theme_mod('consult-contact-call-label'); ?></a>
                 </div>
             </li>
             <li class="contact-list-item-wrap col-md-4">
                 <div class="contact-list-item">
                     <h4 class="title title-bold">Career</h4>
-                    <a href="<?php echo get_theme_mod('consult-contact-career'); ?>" class="contact-atr"><?php echo get_theme_mod('consult-contact-career-label'); ?></a>
+                    <a href="mailto:<?php echo get_theme_mod('consult-contact-career'); ?>" class="contact-atr"><?php echo get_theme_mod('consult-contact-career-label'); ?></a>
                 </div>
             </li>
         </ul>

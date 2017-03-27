@@ -30,24 +30,13 @@
                 ?>
 </div>
 <div class="col-6 col-sm-6 col-md-4 col-lg-2">
-    <h5 class="title title-trasf title-light">Industary</h5>
-    <ul class="foot-industary-list">
-        <li class="foot-industary-item">Education</li>
-        <li class="foot-industary-item">business</li>
-        <li class="foot-industary-item">realestate</li>
-        <li class="foot-industary-item">technology</li>
-        <li class="foot-industary-item">banking</li>
-        <li class="foot-industary-item">communication</li>
-        <li class="foot-industary-item">much more</li>
-    </ul>
+    <?php get_sidebar(); ?>
 </div>
 <div class=" col-md-8 col-lg-5" >
-    <h5 class="title title-trasf title-light">News letter</h5>
-    <p class="description">Enter your email address to subscribe our notification of our new post & features
-        by email.</p>
+    <h5 class="title title-trasf title-light"><?php echo get_theme_mod('form_title'); ?></h5>
+    <p class="description"><?php echo get_theme_mod('form_description'); ?></p>
     <div class="contact-inputs">
-        <input type="email" placeholder="Email Address" class="contact-input-item">
-        <button type="submit" class="btn-prime">Subscribe</button>
+        <?php  echo do_shortcode("[contact-form-7 id=\"153\" title=\"Contact form footer\"]")?>
     </div>
 </div>
 </div>

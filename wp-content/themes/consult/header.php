@@ -42,70 +42,81 @@
                         ));
                     ?>
                     <div class="nav-info d-flex justify-content-around align-items-start">
-                        <a href="<?php echo get_theme_mod('consult-contact-call'); ?>" class="phone"><?php echo get_theme_mod('consult-contact-call-label'); ?></a>
+                        <a href="tel:<?php echo get_theme_mod('consult-contact-call-label'); ?>" class="phone"><?php echo get_theme_mod('consult-contact-call-label'); ?></a>
                         <a href="<?php echo get_theme_mod('consult-contact-email'); ?>" class="head-contact-link"></a>
-                    </div></div>
+                    </div>
+                </div>
             </div>
+            <!--mobile-menu-->
+            <div class="container-fluid">
+                <div class="mobile-nav-wrap">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav-info nav navbar-nav hidden-lg-up ">
+                            <li class="mobile-nav-item"><a href="#">Home</a></li>
+                            <li class="mobile-nav-item"><a href="#">about us</a></li>
+                            <li class="mobile-nav-item"><a href="#">industry</a></li>
+                            <li class="mobile-nav-item"><a href="#">services</a></li>
+                            <li class="mobile-nav-item"><a href="#">pages</a></li>
+                            <li class="mobile-nav-item"><a href="#">Contact us</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- end mobile menu-->
         </header>
-        <!--mobile-menu-->
-        <div class="mobile-nav-wrap">
-            <div class="container">
-                <ul class="nav-info hidden-lg-up d-flex justify-content-between">
-                    <li class="mobile-nav-item"><a href="#">Home</a></li>
-                    <li class="mobile-nav-item"><a href="#">about us</a></li>
-                    <li class="mobile-nav-item"><a href="#">industry</a></li>
-                    <li class="mobile-nav-item"><a href="#">services</a></li>
-                    <li class="mobile-nav-item"><a href="#">pages</a></li>
-                    <li class="mobile-nav-item"><a href="#">Contact us</a></li>
-                </ul>
+        <div class="container-fluid">
+            <div class="mobile-nav-wrap">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav-info nav navbar-nav hidden-lg-up ">
+                        <li class="mobile-nav-item"><a href="#">Home</a></li>
+                        <li class="mobile-nav-item"><a href="#">about us</a></li>
+                        <li class="mobile-nav-item"><a href="#">industry</a></li>
+                        <li class="mobile-nav-item"><a href="#">services</a></li>
+                        <li class="mobile-nav-item"><a href="#">pages</a></li>
+                        <li class="mobile-nav-item"><a href="#">Contact us</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
-        <!-- end mobile menu-->
         <div class="container">
             <!--intro-->
             <h2 class="site-title site-title-light">
-                <span class="site-title-less">We are leading consulting company</span>
-                Choose your industry
+                <span class="site-title-less"><?php echo get_theme_mod('intro_title'); ?></span>
+                <?php echo get_theme_mod('intro_description'); ?>
             </h2>
+           <?php $args = array(
+                'order' => 'ASC',
+                'post_type' => 'page',
+                'post__in'=> array(126,120,128,124,122)
+            );
+            $slideloop = new WP_Query( $args );?>
+            <?php if ( is_front_page() ) : ?>
             <div class="intro-slide">
+                <?php while ($slideloop->have_posts()) :?>
                 <div class="intro-slide-item-wrap ">
-                    <div class="intro-slide-item">
-                        <img src="images/slide-intro-educate-item.png" class="intro-slide-img">
-                        <h4 class="title title-bold title-light title-trasf">Education</h4>
-                    </div>
+                        <div class="intro-slide-item">
+                            <?php $slideloop->the_post(); ?>
+                            <?php the_post_thumbnail() ;?>
+                            <h4 class="title title-bold title-light title-trasf"><?php the_title(); ?></h4>
+                        </div>
                 </div>
-                <div class="intro-slide-item-wrap ">
-                    <div class="intro-slide-item">
-                        <img src="images/slide-intro-business-item.png" class="intro-slide-img">
-                        <h4 class="title title-bold title-light title-trasf">Business</h4>
-                    </div>
-                </div>
-                <div class="intro-slide-item-wrap ">
-                    <div class="intro-slide-item">
-                        <img src="images/slide-intro-tech-item.png" class="intro-slide-img">
-                        <h4 class="title title-bold title-light title-trasf">Technology</h4>
-                    </div>
-                </div>
-                <div class="intro-slide-item-wrap ">
-                    <div class="intro-slide-item">
-                        <img src="images/slide-intro-bank-item.png" class="intro-slide-img">
-                        <h4 class="title title-bold title-light title-trasf">Education</h4>
-                    </div>
-                </div>
-                <div class="intro-slide-item-wrap ">
-                    <div class="intro-slide-item">
-                        <img src="images/slide-intro-bank-item.png" class="intro-slide-img">
-                        <h4 class="title title-bold title-light title-trasf">Education</h4>
-                    </div>
-                </div>
-                <div class="intro-slide-item-wrap ">
-                    <div class="intro-slide-item">
-                        <img src="images/slide-intro-bank-item.png" class="intro-slide-img">
-                        <h4 class="title title-bold title-light title-trasf">Banking</h4>
-                    </div>
-                </div>
-
+                <?php endwhile; wp_reset_postdata(); ?>
+                <?php endif; ?>
             </div>
+
             <!--end intro-->
         </div>
     </section>
+
