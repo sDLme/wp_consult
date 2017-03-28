@@ -18,7 +18,8 @@
             <?php while ($projectsloop->have_posts()) :
             $projectsloop->the_post(); ?>
             <li class="project-list-item col-md-6">
-                <p class="meta-title"><?php the_category()?></p>
+
+                <p class="meta-title"><?php the_taxonomies("'post_type' => 'consult_projects',");?></p>
                     <ul class="project-img-slide">
                         <?php if (has_post_thumbnail() ) : echo  the_post_thumbnail() ;?>
                         <?php else : ;?>

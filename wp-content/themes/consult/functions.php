@@ -3,9 +3,9 @@
 function consult_scripts() {
     wp_enqueue_style( 'consult-style', get_stylesheet_uri() );
 
-    wp_enqueue_script( 'tether', get_template_directory_uri() . 'libs/bootstrap/tether.min.js', array() , false, true );
+    wp_enqueue_script( 'tether', get_template_directory_uri() . '/libs/bootstrap/tether.min.js', array() , false, true );
 
-    wp_enqueue_script( 'bootstrap', get_template_directory_uri() . 'libs/bootstrap/bootstrap.min.js', array(), false, true );
+    wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/libs/bootstrap/bootstrap.min.js', array(), false, true );
 
     wp_enqueue_script( 'slick', get_template_directory_uri() . '/libs/slick/slick.min.js', array(), false, true );
 
@@ -67,3 +67,5 @@ require get_template_directory() . '/inc/customizer.php';
  * Widgets tags for this theme.
  */
 require get_template_directory() . '/inc/widgets.php';
+
+require_once('wp-bootstrap-navwalker.php');

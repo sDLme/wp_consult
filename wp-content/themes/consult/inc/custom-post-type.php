@@ -116,6 +116,7 @@ function create_project_type() {
         'labels'             => $labels,
         'description'        => __( 'Description.' ),
         'public' => true,
+        'taxonomies' => array( 'project' ),
         'rewrite' => array('slug' => 'projects'),
         'supports' => array( 'title','editor','author','thumbnail','excerpt','trackbacks','custom-fields','comments','revisions','page-attributes','post-formats' )
     );

@@ -22,8 +22,8 @@
     <section class="intro section-pd-bottom d-flex flex-column ">
         <header class="site-head">
             <div class="container">
-                <div class="d-flex justify-content-between">
-                    <div class="my-logo col-md-3">
+                <div class=" d-flex justify-content-between flex-wrap align-items-baseline  ">
+                    <div class="my-logo ">
                         <a href="/">
                             <?php
                             if ( function_exists( 'the_custom_logo' ) )
@@ -34,61 +34,42 @@
                         array(
                             'theme_location' => 'header-menu',
                             'menu' => 'header-menu',
-                            'menu_class' => 'nav-info d-flex justify-content-between',
+                            'menu_class' => ' nav-info d-flex justify-content-between',
                             'container' => 'nav',
-                            'container_class' => 'hidden-md-down',
+                            'container_class' => '  hidden-md-down',
                             'before' => '<li class="navigation-item">',
                             'after' => '</li>',
-                        ));
-                    ?>
-                    <div class="nav-info d-flex justify-content-around align-items-start">
+                        ));?>
+                    <div class=" nav-info d-flex justify-content-around align-items-start">
                         <a href="tel:<?php echo get_theme_mod('consult-contact-call-label'); ?>" class="phone"><?php echo get_theme_mod('consult-contact-call-label'); ?></a>
                         <a href="<?php echo get_theme_mod('consult-contact-email'); ?>" class="head-contact-link"></a>
                     </div>
+                    <!--mobile-menu-->
+                    <nav class="navbar navbar-default" role="navigation">
+                        <div class="container-fluid">
+                            <!-- Brand and toggle get grouped for better mobile display -->
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle hidden-md-up my-btm-menu" data-toggle="collapse"
+                                        data-target="#bs-example-navbar-collapse-1">
+                                    <span class="navbar-toggler-icon"></span>
+                                </button>
+                                <div class="collapse navbar-collapse hidden-lg-up" id="bs-example-navbar-collapse-1">
+                                    <ul class="nav navbar-nav">
+                                        <li class="mobile-nav-item"><a href="#">Home</a></li>
+                                        <li class="mobile-nav-item"><a href="#">about us</a></li>
+                                        <li class="mobile-nav-item"><a href="#">industry</a></li>
+                                        <li class="mobile-nav-item"><a href="#">services</a></li>
+                                        <li class="mobile-nav-item"><a href="#">pages</a></li>
+                                        <li class="mobile-nav-item"><a href="#">Contact us</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </nav>
+                    <!-- end mobile menu-->
                 </div>
             </div>
-            <!--mobile-menu-->
-            <div class="container-fluid">
-                <div class="mobile-nav-wrap">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                        <ul class="nav-info nav navbar-nav hidden-lg-up ">
-                            <li class="mobile-nav-item"><a href="#">Home</a></li>
-                            <li class="mobile-nav-item"><a href="#">about us</a></li>
-                            <li class="mobile-nav-item"><a href="#">industry</a></li>
-                            <li class="mobile-nav-item"><a href="#">services</a></li>
-                            <li class="mobile-nav-item"><a href="#">pages</a></li>
-                            <li class="mobile-nav-item"><a href="#">Contact us</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <!-- end mobile menu-->
         </header>
-        <div class="container-fluid">
-            <div class="mobile-nav-wrap">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav-info nav navbar-nav hidden-lg-up ">
-                        <li class="mobile-nav-item"><a href="#">Home</a></li>
-                        <li class="mobile-nav-item"><a href="#">about us</a></li>
-                        <li class="mobile-nav-item"><a href="#">industry</a></li>
-                        <li class="mobile-nav-item"><a href="#">services</a></li>
-                        <li class="mobile-nav-item"><a href="#">pages</a></li>
-                        <li class="mobile-nav-item"><a href="#">Contact us</a></li>
-                    </ul>
-                </div>
-            </div>
         </div>
         <div class="container">
             <!--intro-->

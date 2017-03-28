@@ -47,10 +47,40 @@ function consult_customize_register($wp_customize)
         'transport' => 'refresh',
     ));
     $wp_customize->add_control(new WP_Customize_Upload_Control($wp_customize, 'intro-img-upload', array(
-        'label' => __('Image choice', 'business'),
+        'label' => __('Image choice', 'consult'),
         'section' => 'intro',
         'settings' => 'intro-img-upload',
     )));
+
+    if( class_exists( 'WP_Customize_Control' ) ):
+        class WP_Customize_Services_Post_Control extends WP_Customize_Control {
+            public $type = 'services_post_dropdown';
+
+            public function render_content() {
+
+                $latest = new WP_Query( array(
+                    'post_type'   => 'consult_services',
+                    'post_status' => 'publish',
+                    'orderby'     => 'date',
+                    'order'       => 'DESC'
+                ));
+
+                ?>
+                <label>
+                    <span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
+                    <select <?php $this->link(); ?>>
+                        <?php
+                        while( $latest->have_posts() ) {
+                            $latest->the_post();
+                            echo "<option " . selected( $this->value(), get_the_ID() ) . " value='" . get_the_ID() . "'>" . the_title( '', '', false ) . "</option>";
+                        }
+                        ?>
+                    </select>
+                </label>
+                <?php
+            }
+        }
+    endif;
 
     //Choice of post in servise section
     $wp_customize->add_section( 'services_posts' , array(
@@ -58,20 +88,38 @@ function consult_customize_register($wp_customize)
         'priority'   => 31,
         'panel' => 'front_page',
     ) );
-    $wp_customize->add_setting( 'services_posts_edit' , array(
+    $wp_customize->add_setting( 'services_post_edit-one' , array(
         'default'     => '',
         'transport'   => 'refresh',
     ) );
-    $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'services_posts_edit', array(
-            'label'        => __( 'Services-post', 'consult' ),
-            'section'    => 'services_posts',
-            'settings'   => 'services_posts_edit',
-            'type'     => 'dropdown-',
-            'choices' => array (
-                'post_type' => 'consult_services',
-            )
-        )
-    ));
+    $wp_customize->add_control(  new WP_Customize_Services_Post_Control($wp_customize, 'services_post_edit-one', array(
+        'label' => __( 'Service post 1', 'consult' ),
+        'section' => 'services_posts',
+        'settings' => 'services_post_edit-one',
+        'type' => 'select',
+    )));
+
+    $wp_customize->add_setting( 'services_post_edit-two' , array(
+    'default'     => '',
+    'transport'   => 'refresh',
+) );
+    $wp_customize->add_control(  new WP_Customize_Services_Post_Control($wp_customize, 'services_post_edit-two', array(
+        'label' => __( 'Service post 2', 'consult' ),
+        'section' => 'services_posts',
+        'settings' => 'services_post_edit-two',
+        'type' => 'select',
+    )));
+
+    $wp_customize->add_setting( 'services_post_edit-three' , array(
+        'default'     => '',
+        'transport'   => 'refresh',
+    ) );
+    $wp_customize->add_control(  new WP_Customize_Services_Post_Control($wp_customize, 'services_post_edit-three', array(
+        'label' => __( 'Service post 3', 'consult' ),
+        'section' => 'services_posts',
+        'settings' => 'services_post_edit-three',
+        'type' => 'select',
+    )));
 
     /// Section TESTIMONIAL
     $wp_customize->add_section( 'testimonial_section' , array(
@@ -88,9 +136,7 @@ function consult_customize_register($wp_customize)
             'section'    => 'testimonial_section',
             'settings'   => 'testimonial_title',
             'type'     => 'text',
-        )
-    ));
-
+    )));
 
 ////contact section
     $wp_customize->add_section('consult', array(
@@ -164,6 +210,22 @@ function consult_customize_register($wp_customize)
         'type' => 'input'
     )));
 
+
+    ///Contact Page
+    $wp_customize->add_section( 'contact_page' , array(
+        'title'      => __( 'Contact Page', 'consult' ),
+        'priority'   => 30,
+    ) );
+    $wp_customize->add_setting( 'contact_form_title' , array(
+        'default'     => '',
+        'transport'   => 'refresh',
+    ) );
+    $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'contact_form_title', array(
+        'label'        => __( 'Contact form title', 'consult' ),
+        'section'    => 'contact_page',
+        'settings'   => 'contact_form_title',
+        'type'     => 'text',
+    )));
 
 
     ///footer
@@ -252,7 +314,6 @@ function consult_customize_register($wp_customize)
         'settings'   => 'form_description',
         'type' => 'textarea'
     ) ) );
-
 }
 function business_head (){
     ?>

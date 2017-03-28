@@ -100,7 +100,7 @@
                <li class="project-list-item col-md-8">
           <?php  }?>
 
-                <p class="meta-title"><?php ; ?></p>
+                <p class="meta-title"><?php the_taxonomies("'post_type' => 'consult_projects',");?></p>
                 <ul class="project-img-slide">
                     <?php if (has_post_thumbnail() ) : echo  the_post_thumbnail() ;?>
                     <?php else : ;?>
@@ -129,10 +129,11 @@
         <?php
         $args = array(
             'post_type' => 'consult_services',
-            'post__in'=> array(44,46,48)
+            'post__in'=> array(get_theme_mod('services_post_edit-one'),get_theme_mod('services_post_edit-two'),get_theme_mod('services_post_edit-three'))
         );
         $servisloop = new WP_Query( $args);
         ?>
+
         <ul class="services-list row">
             <?php while ($servisloop->have_posts()) :
             $servisloop->the_post(); ?>

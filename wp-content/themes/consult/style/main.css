@@ -340,7 +340,8 @@ p {
   color: #e2e2e2; }
 
 .site-head {
-  padding-top: 55px; }
+  padding-top: 50px;
+padding-bottom: 50px}
   .site-head .navigation-item {
     margin-right: 15px;
     margin-left: 15px; }
@@ -893,4 +894,37 @@ p {
 }
 .email-439 {
   display: flex;
+}
+
+/*
+* Contact us
+*/
+.contact-form .wpcf7-form >p {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 40px 0;
+}
+.wpcf7-form-control-wrap {
+  width: 100%;
+}
+.form-contact {
+  border: 1px solid;
+}
+
+.contact-wrapp {
+  margin-bottom: 50px;
+}
+.contact-title   {
+  margin-bottom: 59px;
+  line-height: 2em;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+.my-btm-menu {
+  background: #03b6e7;
+  border: none;
+  outline: none;
+  border-radius: 50px;
+  width: 35px;
+  height: 35px;
 }
