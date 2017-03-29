@@ -11,7 +11,14 @@ function consult_scripts() {
 
     wp_enqueue_script( 'main', get_template_directory_uri() . '/js/main.js', array(), false, true );
 
+    wp_register_script( 'theme_script', get_template_directory_uri() . '/loadmore.js' );
+
+    wp_localize_script( 'theme_script', 'params', array(
+        'ajax_url' => admin_url( 'admin-ajax.php' )
+    ) );
+
     wp_enqueue_style( 'style', get_template_directory_uri() . '/style/main.css');
+
 
     if (!is_admin()) {
         wp_deregister_script('jquery');
@@ -50,7 +57,6 @@ function my_add_excerpts_to_pages() {
 	     add_post_type_support( 'page', 'excerpt' );
 	}
 
-
 /**
  * Custom template tags for this theme.
  */
@@ -68,4 +74,5 @@ require get_template_directory() . '/inc/customizer.php';
  */
 require get_template_directory() . '/inc/widgets.php';
 
-require_once('wp-bootstrap-navwalker.php');
+require get_template_directory() . '/inc/ajax.php';
+

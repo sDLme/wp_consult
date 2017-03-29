@@ -8,7 +8,6 @@
 <section class=" section-bg-serv section-pd section-pd-bottom">
     <div class="container">
         <h3 class="section-title"><?php the_title(); ?></h3>
-
         <?php
         $args = array('post_type' => 'consult_services');
         $servisloop = new WP_Query($args);

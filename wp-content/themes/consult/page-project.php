@@ -7,6 +7,7 @@
 <section class="section-pd">
     <div class="container">
         <h3 class="section-title"><?php the_title(); ?></h3>
+
         <?php
         $args = array(
             'order' => 'ASC',
@@ -14,11 +15,14 @@
         );
         $projectsloop = new WP_Query($args);
         ?>
+
+        <?php $count_posts = wp_count_posts(); ?>
+        <div id="post-count"><?php echo $count_posts->publish; ?></div>
+
         <ul class="project-list row">
             <?php while ($projectsloop->have_posts()) :
             $projectsloop->the_post(); ?>
             <li class="project-list-item col-md-6">
-
                 <p class="meta-title"><?php the_taxonomies("'post_type' => 'consult_projects',");?></p>
                     <ul class="project-img-slide">
                         <?php if (has_post_thumbnail() ) : echo  the_post_thumbnail() ;?>
@@ -33,9 +37,12 @@
                     <h4 class="title title-light title-trasf title-bold"><?php the_title(); ?></h4>
                     <p class="description description-light"><?php the_content(); ?></p>
                 </div>
-                <?php  endwhile; wp_reset_postdata(); ?>
+
+                <?php  endwhile;
+                wp_reset_postdata(); ?>
             </li>
         </ul>
+        <a href="#" id="load-post" title="">Показать еще</a>
     </div>
 </section>
 

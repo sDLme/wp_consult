@@ -48,11 +48,16 @@
 <!--FEACHERS-->
 <section class="section-pd section-bg-feach">
     <div class="container">
-        <h3 class="section-title">our features</h3>
+        <h3 class="section-title"><?php echo get_theme_mod('feature_title'); ?></h3>
         <?php
         $args = array(
             'post_type' => 'consult_features',
-            'post__in'=> array(72,70,62,74,68));
+            'post__in'=> array(
+                get_theme_mod('features_post_edit-one'),
+                get_theme_mod('features_post_edit-two'),
+                get_theme_mod('features_post_edit-three'),
+                get_theme_mod('features_post_edit-four'),
+                get_theme_mod('features_post_edit-one')));
         $servisloop = new WP_Query( $args);
         ?>
         <ul class="feature-list row">
@@ -92,7 +97,9 @@
         <ul class="project-list row">
             <?php while ($projectsloop->have_posts()) :
             $projectsloop->the_post();
-            $counter++;
+            $pjwork= CFS()->get('check_show') ;?>
+            <?php if($pjwork==1) : ;?>
+           <?php $counter++;
             if($counter ===1) { ?>
                 <li class="project-list-item col-md-4">
            <?php }
@@ -114,6 +121,8 @@
                     <h4 class="title title-light title-trasf title-bold"><?php the_title(); ?></h4>
                     <p class="description description-light"><?php the_excerpt(); ?></p>
                 </div>
+                <?php else : ;?>
+                <?php endif ;?>
                 <?php endwhile; wp_reset_postdata(); ?>
             </li>
         </ul>
@@ -201,7 +210,7 @@
             </li>
                 <?php endwhile; endif; wp_reset_postdata() ?>
         </ul>
-        <button class="btn-prime btn-prime-center">Full Blog</button>
+        <a href="/blog" class="btn-prime btn-prime-center">Full Blog</a>
     </div>
 </section>
 <!--END BLOG-->

@@ -49,9 +49,12 @@
                         <div class="container-fluid">
                             <!-- Brand and toggle get grouped for better mobile display -->
                             <div class="navbar-header">
-                                <button type="button" class="navbar-toggle hidden-md-up my-btm-menu" data-toggle="collapse"
+                                <button type="button" class="navbar-toggle hidden-md-up " data-toggle="collapse"
                                         data-target="#bs-example-navbar-collapse-1">
-                                    <span class="navbar-toggler-icon"></span>
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
                                 </button>
                                 <div class="collapse navbar-collapse hidden-lg-up" id="bs-example-navbar-collapse-1">
                                     <ul class="nav navbar-nav">
@@ -80,7 +83,12 @@
            <?php $args = array(
                 'order' => 'ASC',
                 'post_type' => 'page',
-                'post__in'=> array(126,120,128,124,122)
+                'post__in'=> array(
+                    get_theme_mod('intro_slide_one'),
+                    get_theme_mod('intro_slide_two'),
+                    get_theme_mod('intro_slide_three'),
+                    get_theme_mod('intro_slide_four'),
+                    get_theme_mod('intro_slide_five'))
             );
             $slideloop = new WP_Query( $args );?>
             <?php if ( is_front_page() ) : ?>
@@ -88,9 +96,11 @@
                 <?php while ($slideloop->have_posts()) :?>
                 <div class="intro-slide-item-wrap ">
                         <div class="intro-slide-item">
+
                             <?php $slideloop->the_post(); ?>
                             <?php the_post_thumbnail() ;?>
                             <h4 class="title title-bold title-light title-trasf"><?php the_title(); ?></h4>
+
                         </div>
                 </div>
                 <?php endwhile; wp_reset_postdata(); ?>

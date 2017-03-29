@@ -44,10 +44,15 @@
 <div class="footer-foo row d-flex justify-content-between align-items-center">
     <p class="copy">Copyright © 2016 Consultplus theme.</p>
     <ul class="social-list d-flex justify-content-between">
+
         <li class="social-list-facebook"><a href="<?php echo get_theme_mod('social_links_facebook'); ?>">Facebook</a></li>
+
         <li class="social-list-twitter"><a href="<?php echo get_theme_mod('social_links_twitter'); ?>">twitter</a></li>
+
         <li class="social-list-instagram"><a href="<?php echo get_theme_mod('social_links_instagram'); ?>">instagram</a></li>
+
         <li class="social-list-linkedin"><a href="<?php echo get_theme_mod('social_links_linkedin'); ?>">linkedin</a></li>
+
         <li class="social-list-google"><a href="<?php echo get_theme_mod('social_links_google'); ?>">google +</a></li>
     </ul>
 </div>

@@ -17,7 +17,7 @@ function consult_customize_register($wp_customize)
     ///intro
     $wp_customize->add_section('intro', array(
         "title" => __('Welcome section', 'consult'),
-        'priority' => 30,
+        'priority' => 29,
         'panel' => 'front_page',
     ));
     $wp_customize->add_setting('intro_title', array(
@@ -53,6 +53,194 @@ function consult_customize_register($wp_customize)
     )));
 
     if( class_exists( 'WP_Customize_Control' ) ):
+        class WP_Customize_Sub_Pages_Control extends WP_Customize_Control {
+            public $type = 'sub_pages_dropdown';
+
+            public function render_content() {
+
+                $latest = new WP_Query( array(
+                    'post_type'   => 'page',
+                    'post_parent' => '15',
+                    'post_status' => 'publish',
+                    'orderby'     => 'date',
+                    'order'       => 'DESC'
+                ));
+
+                ?>
+                <label>
+                    <span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
+                    <select <?php $this->link(); ?>>
+                        <?php
+                        while( $latest->have_posts() ) {
+                            $latest->the_post();
+                            echo "<option " . selected( $this->value(), get_the_ID() ) . " value='" . get_the_ID() . "'>" . the_title( '', '', false ) . "</option>";
+                        }
+                        ?>
+                    </select>
+                </label>
+                <?php
+            }
+        }
+    endif;
+
+    $wp_customize->add_section('intro_slider', array(
+        "title" => __('Welcom section carousel', 'consult'),
+        'priority' => 30,
+        'panel' => 'front_page',
+
+    ));
+    $wp_customize->add_setting('intro_slide_one', array(
+        'default' => '',
+        'transport' => 'refresh',
+    ));
+    $wp_customize->add_control(new WP_Customize_Sub_Pages_Control($wp_customize, 'intro_slide_one', array(
+        'label' => __('Carousel item one', 'consult'),
+        'section' => 'intro_slider',
+        'settings' => 'intro_slide_one',
+        'type' => 'select'
+    )));
+
+    $wp_customize->add_setting('intro_slide_two', array(
+        'default' => '',
+        'transport' => 'refresh',
+    ));
+    $wp_customize->add_control(new WP_Customize_Sub_Pages_Control($wp_customize, 'intro_slide_two', array(
+        'label' => __('Carousel item two', 'consult'),
+        'section' => 'intro_slider',
+        'settings' => 'intro_slide_two',
+        'type' => 'select'
+    )));
+
+    $wp_customize->add_setting('intro_slide_three', array(
+        'default' => '',
+        'transport' => 'refresh',
+    ));
+    $wp_customize->add_control(new WP_Customize_Sub_Pages_Control($wp_customize, 'intro_slide_three', array(
+        'label' => __('Carousel item three', 'consult'),
+        'section' => 'intro_slider',
+        'settings' => 'intro_slide_three',
+        'type' => 'select'
+    )));
+
+    $wp_customize->add_setting('intro_slide_four', array(
+        'default' => '',
+        'transport' => 'refresh',
+    ));
+    $wp_customize->add_control(new WP_Customize_Sub_Pages_Control($wp_customize, 'intro_slide_four', array(
+        'label' => __('Carousel item four', 'consult'),
+        'section' => 'intro_slider',
+        'settings' => 'intro_slide_four',
+        'type' => 'select'
+    )));
+
+    $wp_customize->add_setting('intro_slide_five', array(
+        'default' => '',
+        'transport' => 'refresh',
+    ));
+    $wp_customize->add_control(new WP_Customize_Sub_Pages_Control($wp_customize, 'intro_slide_five', array(
+        'label' => __('Carousel item five', 'consult'),
+        'section' => 'intro_slider',
+        'settings' => 'intro_slide_five',
+        'type' => 'select'
+    )));
+
+//------------------------end intro---------------------------------//
+
+    ///Feature section
+    $wp_customize->add_section( 'features_posts' , array(
+        'title'      => __( 'Features posts', 'consult' ),
+        'priority'   => 31,
+        'panel' => 'front_page',
+    ) );
+    $wp_customize->add_setting('feature_title', array(
+        'default' => '',
+        'transport' => 'refresh',
+    ));
+    $wp_customize->add_control(new WP_Customize_Control($wp_customize, 'feature_title', array(
+        'label' => __('Feature Title', 'consult'),
+        'section' => 'features_posts',
+        'settings' => 'feature_title',
+        'type' => 'text'
+    )));
+
+    ///function for features choice
+    if( class_exists( 'WP_Customize_Control' ) ):
+        class WP_Customize_Features_Post_Control extends WP_Customize_Control {
+            public $type = 'features_post_dropdown';
+
+            public function render_content() {
+
+                $latest = new WP_Query( array(
+                    'post_type'   => 'consult_features',
+                    'post_status' => 'publish',
+                    'orderby'     => 'date',
+                    'order'       => 'DESC'
+                ));
+
+                ?>
+                <label>
+                    <span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
+                    <select <?php $this->link(); ?>>
+                        <?php
+                        while( $latest->have_posts() ) {
+                            $latest->the_post();
+                            echo "<option " . selected( $this->value(), get_the_ID() ) . " value='" . get_the_ID() . "'>" . the_title( '', '', false ) . "</option>";
+                        }
+                        ?>
+                    </select>
+                </label>
+                <?php
+            }
+        }
+    endif;
+
+    $wp_customize->add_setting( 'features_post_edit-one' , array(
+        'default'     => '',
+        'transport'   => 'refresh',
+    ) );
+    $wp_customize->add_control(  new WP_Customize_Features_Post_Control($wp_customize, 'features_post_edit-one', array(
+        'label' => __( 'Feature post 1', 'consult' ),
+        'section' => 'features_posts',
+        'settings' => 'features_post_edit-one',
+        'type' => 'select',
+    )));
+
+    $wp_customize->add_setting( 'features_post_edit-two' , array(
+        'default'     => '',
+        'transport'   => 'refresh',
+    ) );
+    $wp_customize->add_control(  new WP_Customize_Features_Post_Control($wp_customize, 'features_post_edit-two', array(
+        'label' => __( 'Feature post 2', 'consult' ),
+        'section' => 'features_posts',
+        'settings' => 'features_post_edit-two',
+        'type' => 'select',
+    )));
+
+    $wp_customize->add_setting( 'features_post_edit-three' , array(
+        'default'     => '',
+        'transport'   => 'refresh',
+    ) );
+    $wp_customize->add_control(  new WP_Customize_Features_Post_Control($wp_customize, 'feature_post_edit-three', array(
+        'label' => __( 'Features post 3', 'consult' ),
+        'section' => 'features_posts',
+        'settings' => 'features_post_edit-three',
+        'type' => 'select',
+    )));
+
+    $wp_customize->add_setting( 'features_post_edit-four' , array(
+        'default'     => '',
+        'transport'   => 'refresh',
+    ) );
+    $wp_customize->add_control(  new WP_Customize_Features_Post_Control($wp_customize, 'feature_post_edit-four', array(
+        'label' => __( 'Features post 4', 'consult' ),
+        'section' => 'features_posts',
+        'settings' => 'features_post_edit-four',
+        'type' => 'select',
+    )));
+///-----end feature section-----///
+
+///function for section
+    if( class_exists( 'WP_Customize_Control' ) ):
         class WP_Customize_Services_Post_Control extends WP_Customize_Control {
             public $type = 'services_post_dropdown';
 
@@ -81,11 +269,10 @@ function consult_customize_register($wp_customize)
             }
         }
     endif;
-
-    //Choice of post in servise section
+//Choice of post in servise section
     $wp_customize->add_section( 'services_posts' , array(
         'title'      => __( 'Services posts', 'consult' ),
-        'priority'   => 31,
+        'priority'   => 32,
         'panel' => 'front_page',
     ) );
     $wp_customize->add_setting( 'services_post_edit-one' , array(
@@ -120,11 +307,11 @@ function consult_customize_register($wp_customize)
         'settings' => 'services_post_edit-three',
         'type' => 'select',
     )));
-
+///-----end service section-----///
     /// Section TESTIMONIAL
     $wp_customize->add_section( 'testimonial_section' , array(
         'title'      => __( 'Testimonial section', 'consult' ),
-        'priority'   => 30,
+        'priority'   => 33,
         'panel' => 'front_page',
     ) );
     $wp_customize->add_setting( 'testimonial_title' , array(
@@ -141,7 +328,7 @@ function consult_customize_register($wp_customize)
 ////contact section
     $wp_customize->add_section('consult', array(
         "title" => __('Contact us', 'consult'),
-        'priority' => 32,
+        'priority' => 34,
         'panel' => 'front_page',
     ));
 
@@ -188,7 +375,6 @@ function consult_customize_register($wp_customize)
         'type' => 'input'
     )));
 
-
     $wp_customize->add_setting('consult-contact-career-label', array(
         'default' => '',
         'transport' => 'refresh',
@@ -230,10 +416,15 @@ function consult_customize_register($wp_customize)
 
     ///footer
     ///social-links in footer
+    $wp_customize->add_panel( 'footer', array(
+        'title' => __( 'Footer Section' ),
+        'description' => __( 'footer section edit', 'consult' ),
+        'priority' => 50,
+    ) );
     $wp_customize->add_section( 'consult_social_links' , array(
         'title'      => __( 'Social links', 'consult' ),
-        'priority'   => 33,
-        'panel' => 'front_page',
+        'priority'   => 35,
+        'panel' => 'footer',
     ) );
 
     $wp_customize->add_setting( 'social_links_facebook' , array(
@@ -291,7 +482,8 @@ function consult_customize_register($wp_customize)
     ////Footer form
     $wp_customize->add_section( 'footer-form-description' , array(
         'title'      => __( 'Footer form description', 'consult' ),
-        'priority'   => 35,
+        'priority'   => 33,
+        'panel' => 'footer',
     ) );
 
     $wp_customize->add_setting( 'form_title' , array(
