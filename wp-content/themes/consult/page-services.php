@@ -8,8 +8,9 @@
 <section class=" section-bg-serv section-pd section-pd-bottom">
     <div class="container">
         <h3 class="section-title"><?php the_title(); ?></h3>
-        <?php
-        $args = array('post_type' => 'consult_services');
+      <div id="service-ajax-content">
+          <?php
+        $args = array('post_type' => 'consult_services', 'posts_per_page' => 3,);
         $servisloop = new WP_Query($args);
         ?>
         <ul class="services-list row">
@@ -25,6 +26,19 @@
                 wp_reset_postdata(); ?>
             </li>
         </ul>
+          <script>
+              var servise_current_page = '<?php echo (get_query_var('paged')) ? get_query_var('paged') : 1; ?>';
+              var servise_max_pages = '<?php echo $servisloop->max_num_pages; ?>';
+          </script>
+          <script>
+              var servise_true_posts = '<?php echo serialize($servisloop->query_vars); ?>';
+
+          </script>
+      </div>
+    </div>
+    <div class="load-more-wrap" id="service_true_loadmore">
+        <a href="#">Load more</a>
+    </div>
     </div>
 </section>
 

@@ -7,17 +7,48 @@
  */
 
 ///Ajax
-function true_loadmore_scripts() {
-    wp_enqueue_script('jquery');
-    wp_enqueue_script( 'true_loadmore', get_stylesheet_directory_uri() . '/loadmore.js', array('jquery') );
+
+
+function true_load_posts()
+{
+    $args = unserialize(stripslashes($_POST['query']));
+    $args['paged'] = $_POST['page'] +1 ; // следующая страница
+    $projects_query = new WP_Query($args);
+    $result = '';
+
+         if( $projects_query->have_posts() ):
+             while( $projects_query->have_posts() ) : $projects_query->the_post();
+             global $post;
+             $post_terms = get_the_terms($post->ID, 'works');
+             $post_terms_names = array_map( function($term) {
+                 return $term->name;
+             }, $post_terms);
+             $post_terms_names = implode(' ', $post_terms_names);
+
+             $result .=
+             '<li class="project-list-item col-md-6">
+                 <p class="meta-title">' . $post_terms_names . '</p>
+                 <ul class="project-img-slide">';
+
+             if (has_post_thumbnail()) {
+                 $result .= get_the_post_thumbnail();
+             } else {
+                    $slider = CFS()->get('project_slid');
+                    foreach ($slider as $slide) {
+                        $result .= '<li><img src="' . $slide['slider_img'] . '" alt=""></li>';
+                    }
+             }
+         $result .= '</ul>
+        <div class="project-description">
+            <h4 class="title title-light title-trasf title-bold">' . get_the_title() . '</h4>
+            <p class="description description-light">' . get_the_content() . '</p>
+        </div>
+        </li>';
+    endwhile; endif;
+    wp_reset_postdata();
+
+    echo $result;
+    die();
 }
-
-add_action( 'wp_enqueue_scripts', 'true_loadmore_scripts' );
-
-
-
-
-
-
 add_action('wp_ajax_loadmore', 'true_load_posts');
 add_action('wp_ajax_nopriv_loadmore', 'true_load_posts');

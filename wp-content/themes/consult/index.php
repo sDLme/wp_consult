@@ -1,10 +1,10 @@
 <?php get_header(); ?>
 
-<section class="section-pd">
+<section class="section-pd section-bg-blog">
     <div class="container">
         <h3 class="section-title"><?php wp_title("", true); ?></h3>
         <?php
-        $args = array('post_type' => 'post', 'order' => 'ASC', 'posts_per_page' => 2);
+        $args = array('post_type' => 'post', 'order' => 'ASC', );
         $loop = new WP_Query($args); ?>
         <ul class="blog-list row no-gutters">
             <?php if ($loop->have_posts()): ?>

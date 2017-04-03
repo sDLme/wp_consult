@@ -106,8 +106,7 @@
            else { ?>
                <li class="project-list-item col-md-8">
           <?php  }?>
-
-                <p class="meta-title"><?php the_taxonomies("'post_type' => 'consult_projects',");?></p>
+                <p class="meta-title"><?php echo the_terms($post->ID,'works') ; ?></p>
                 <ul class="project-img-slide">
                     <?php if (has_post_thumbnail() ) : echo  the_post_thumbnail() ;?>
                     <?php else : ;?>
@@ -210,7 +209,7 @@
             </li>
                 <?php endwhile; endif; wp_reset_postdata() ?>
         </ul>
-        <a href="/blog" class="btn-prime btn-prime-center">Full Blog</a>
+       <div class="center-btn"> <a href="/blog" class="btn-prime btn-prime-center">Full Blog</a></div>
     </div>
 </section>
 <!--END BLOG-->
@@ -241,6 +240,6 @@
     </div>
 </section>
 <!--END CONTACT US-->
-</main>
+
 <?php get_footer();?>
 

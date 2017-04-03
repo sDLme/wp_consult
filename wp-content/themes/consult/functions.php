@@ -3,17 +3,20 @@
 function consult_scripts() {
     wp_enqueue_style( 'consult-style', get_stylesheet_uri() );
 
-    wp_enqueue_script( 'tether', get_template_directory_uri() . '/libs/bootstrap/tether.min.js', array() , false, true );
+    wp_enqueue_script( 'jquery' );
 
-    wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/libs/bootstrap/bootstrap.min.js', array(), false, true );
+    wp_enqueue_script( 'tether', get_template_directory_uri() . '/libs/bootstrap/tether.min.js', array('jquery') , false, true );
 
-    wp_enqueue_script( 'slick', get_template_directory_uri() . '/libs/slick/slick.min.js', array(), false, true );
+    wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/libs/bootstrap/bootstrap.min.js', array('jquery'), false, true );
 
-    wp_enqueue_script( 'main', get_template_directory_uri() . '/js/main.js', array(), false, true );
+    wp_enqueue_script( 'slick', get_template_directory_uri() . '/libs/slick/slick.min.js', array('jquery'), false, true );
 
-    wp_register_script( 'theme_script', get_template_directory_uri() . '/loadmore.js' );
+    wp_enqueue_script( 'main', get_template_directory_uri() . '/js/main.js', array('jquery', 'slick'), false, true );
 
-    wp_localize_script( 'theme_script', 'params', array(
+    wp_enqueue_script( 'consult_script', get_template_directory_uri() . '/js/loadmore.js', array('jquery'), false, true  );
+    wp_enqueue_script( 'service_script', get_template_directory_uri() . '/js/load-service.js', array('jquery'), false, true  );
+
+    wp_localize_script( 'consult_script', 'wp_vars', array(
         'ajax_url' => admin_url( 'admin-ajax.php' )
     ) );
 
@@ -32,6 +35,8 @@ function consult_scripts() {
 
 add_action( 'wp_enqueue_scripts', 'consult_scripts' );
 
+//поддержка групировки ссылок
+add_filter( 'pre_option_link_manager_enabled', '__return_true' );
 
 ///FEATURED IMG
 add_theme_support( 'post-thumbnails' );
@@ -64,7 +69,7 @@ require get_template_directory() . '/inc/custom-post-type.php';
 /**
  * Custom taxonomy for this theme.
  */
-require get_template_directory() . '/inc/taxonomy.php';
+require get_template_directory() . '/inc/custom-reg-tax.php';
 /**
  * Customaizer tags for this theme.
  */
@@ -75,4 +80,30 @@ require get_template_directory() . '/inc/customizer.php';
 require get_template_directory() . '/inc/widgets.php';
 
 require get_template_directory() . '/inc/ajax.php';
+
+require get_template_directory() . '/inc/ajax-for-service.php';
+
+
+
+
+
+
+
+
+
+
+
+
+
+if (!function_exists('write_log')) {
+    function write_log ( $log )  {
+        if ( true === WP_DEBUG ) {
+            if ( is_array( $log ) || is_object( $log ) ) {
+                error_log( print_r( $log, true ) );
+            } else {
+                error_log( $log );
+            }
+        }
+    }
+}
 

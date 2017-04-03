@@ -4,7 +4,7 @@
  * Template Name: Indastry-page
  */
 get_header(); ?>
-<section class="section-pd  section-pd-bottom">
+<section class="section-pd  ny-page section-pd-bottom">
     <div class="container">
         <h3 class="section-title"><?php wp_title("", true); ?></h3>
         <?php

@@ -507,7 +507,7 @@ function consult_customize_register($wp_customize)
         'type' => 'textarea'
     ) ) );
 }
-function business_head (){
+function consult_head (){
     ?>
     <style type="text/css">
         .intro { background: url("<?php echo get_theme_mod('intro-img-upload'); ?>") center no-repeat;
@@ -518,6 +518,6 @@ function business_head (){
     <?php
 }
 
-add_action( 'wp_head', 'business_head');
+add_action( 'wp_head', 'consult_head');
 
 add_action( 'customize_register', 'consult_customize_register' );

@@ -1,7 +1,7 @@
 <?php
 /**
  *
- *Template Name: About page
+ *Template Name: industry page
  */
 ?>
 <?php get_header(); ?>

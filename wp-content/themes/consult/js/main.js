@@ -2,8 +2,15 @@
  * Created by Marina on 10.03.2017.
  */
 
+(function($) {
+    var origAppend = $.fn.append;
 
-    $(document).ready(function(){
+    $.fn.append = function () {
+        return origAppend.apply(this, arguments).trigger("append");
+    };
+})(jQuery);
+
+$(document).ready(function(){
 ///INTRO SLID
         $('.intro-slide').slick({
             dots: true,
@@ -48,7 +55,7 @@
         autoplay: true,
         nextArrow: false,
        prevArrow: false,
-}),
+    });
 
 /// Portfolio-slider
     $('.project-img-slide').slick({
@@ -56,7 +63,7 @@
         dots: true,
         nextArrow: false,
         prevArrow: false,
-    }),
+    });
 
 ///ABOUT carousel
     $('.carousel-clients').slick({

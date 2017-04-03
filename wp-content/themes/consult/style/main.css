@@ -246,6 +246,7 @@ p {
 }
 .center-btn {
   text-align: center;
+  color: #fff;
 }
 .btn-prime {
   display: inline-block;
@@ -256,19 +257,24 @@ p {
   font-size: 13px;
   border: 1px solid transparent;
   background: #16d428;
-  color: #fff;
   cursor: pointer;
   outline: none; }
+  .btn-prime a {
+    color: #fff;
+  }
   .btn-prime:hover {
     border: 1px solid #16d428;
-    background: #323334;
+    background: transparent;
     color: #838b8c; }
+
   .btn-prime-center {
-    display: inline-block;
+    max-width: 190px;
+    width: 100%;
     margin-top: 40px;
     margin-bottom: 20px;
     margin-left: auto;
     margin-right: auto; }
+
 
 .section-pd {
   padding-top: 90px; }
@@ -538,8 +544,20 @@ padding-bottom: 50px}
     font-family: 'Domine', serif; }
     @media (max-width: 992px) {
       .contact-us-area .contact-description {
+        margin: 0 auto;
         line-height: 15px;
         font-size: 15px; } }
+    @media (max-width: 768px) {
+      .contact-us-area {
+        flex-wrap: wrap;
+        text-align: center; }
+      .contact-us-area .contact-description {
+        margin-bottom: 15px;
+         }
+      .contact-us-area .btn-prime {
+        margin: 0 auto;
+      }}
+
 
 .project-list {
   margin-top: 30px;
@@ -883,7 +901,10 @@ padding-bottom: 50px}
       margin-left: 5px;
       margin-right: 5px;
       font-size: 10px; } }
-
+/**********************************************/
+.other-height {
+  height: 100%;
+}
 
 /*
 *Footer form
@@ -927,4 +948,39 @@ padding-bottom: 50px}
   border-radius: 50px;
   width: 35px;
   height: 35px;
+}
+.manu-mob {
+  display: block;
+  width: 35px;
+  height: 35px;
+  border: none;
+  outline: none;
+  background: transparent url("../images/menu-icon.png") center no-repeat;
+}
+
+
+.my-nav-bar-position {
+  position: absolute;
+  z-index: 8;
+  right: 0;
+}
+.my-nav-flex {
+  justify-content: space-around;
+  margin: auto;
+  width: 100%;
+  text-align: center;
+  background: rebeccapurple;
+
+}
+.mobile-nav-item {
+  margin: 20px;
+  padding: 2px;
+  font-size: 1rem;
+  font-weight: 300;
+  color: #fff;
+  border-bottom: 1px solid;
+  text-transform: uppercase;
+}
+.email-797 {
+  display: flex;
 }
