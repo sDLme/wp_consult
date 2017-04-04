@@ -3,8 +3,9 @@
 <section class="section-pd section-bg-blog">
     <div class="container">
         <h3 class="section-title"><?php wp_title("", true); ?></h3>
-        <?php
-        $args = array('post_type' => 'post', 'order' => 'ASC', );
+       <div id="blog-ajax-container">
+           <?php
+        $args = array('post_type' => 'post', 'order' => 'ASC', 'posts_per_page' => 1 );
         $loop = new WP_Query($args); ?>
         <ul class="blog-list row no-gutters">
             <?php if ($loop->have_posts()): ?>
@@ -27,6 +28,17 @@
                 <?php endwhile; endif;
             wp_reset_postdata() ?>
         </ul>
+       </div>
+        <div class="load-more-wrap center-btn" id="blog_true_loadmore">
+            <a class="btn-prime btn-prime-center">Load more</a>
+        </div>
+        <script>
+            var blog_current_page = '<?php echo (get_query_var('paged')) ? get_query_var('paged') : 1; ?>';
+            var blog_max_pages = '<?php echo $loop->max_num_pages; ?>';
+        </script>
+        <script>
+            var blog_true_posts = '<?php echo serialize($loop->query_vars); ?>';
+        </script>
     </div>
 </section>
 <?php get_footer(); ?>

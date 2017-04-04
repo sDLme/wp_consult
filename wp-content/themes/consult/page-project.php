@@ -53,8 +53,8 @@
 
             </script>
         </div>
-        <div class="load-more-wrap" id="true_loadmore">
-            <a href="#">Load more</a>
+        <div class="load-more-wrap center-btn" id="true_loadmore">
+            <a href="#" class="btn-prime btn-prime-center">Load more</a>
         </div>
     </div>
     </div>

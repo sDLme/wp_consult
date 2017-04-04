@@ -48,7 +48,7 @@ function true_load_posts()
     wp_reset_postdata();
 
     echo $result;
-    die();
+    wp_die();
 }
 add_action('wp_ajax_loadmore', 'true_load_posts');
 add_action('wp_ajax_nopriv_loadmore', 'true_load_posts');

@@ -10,7 +10,7 @@
         <h3 class="section-title"><?php the_title(); ?></h3>
       <div id="service-ajax-content">
           <?php
-        $args = array('post_type' => 'consult_services', 'posts_per_page' => 3,);
+        $args = array('post_type' => 'consult_services', 'posts_per_page' => 3);
         $servisloop = new WP_Query($args);
         ?>
         <ul class="services-list row">
@@ -36,8 +36,8 @@
           </script>
       </div>
     </div>
-    <div class="load-more-wrap" id="service_true_loadmore">
-        <a href="#">Load more</a>
+    <div class="load-more-wrap center-btn" id="service_true_loadmore">
+        <a href="/" class="btn-prime btn-prime-center">Load more</a>
     </div>
     </div>
 </section>

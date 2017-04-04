@@ -605,7 +605,14 @@ padding-bottom: 50px}
     text-transform: uppercase;
     border: 2px solid #f6961b;
     border-radius: 50px;
-    color: #fff; }
+    color: #fff;}
+      @media (max-width:768px) {
+  .project-list-item .meta-title {
+    padding: 0.5rem;
+    font-size: 0.3rem;
+    line-height: 0.5rem;
+  }
+  }
   .project-list-item .project-description {
     padding: 40px 30px; }
   .project-list-item:nth-child(odd) .project-description {

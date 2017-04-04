@@ -81,33 +81,33 @@
                 <span class="site-title-less"><?php echo get_theme_mod('intro_title'); ?></span>
                 <?php echo get_theme_mod('intro_description'); ?>
             </h2>
-           <?php $args = array(
-                'order' => 'ASC',
-                'post_type' => 'page',
-                'post__in'=> array(
-                    get_theme_mod('intro_slide_one'),
-                    get_theme_mod('intro_slide_two'),
-                    get_theme_mod('intro_slide_three'),
-                    get_theme_mod('intro_slide_four'),
-                    get_theme_mod('intro_slide_five'))
-            );
-            $slideloop = new WP_Query( $args );?>
+
             <?php if ( is_front_page() ) : ?>
             <div class="intro-slide">
-                <?php while ($slideloop->have_posts()) :?>
+                <?php
+                $args = array(
+                    'type'         => 'post',
+                    'child_of'     => 0,
+                    'hide_empty'   => 0,
+                    'hierarchical' => 1,
+                    'exclude'      => '',
+                    'include'      => '',
+                    'number'       => 0,
+                    'taxonomy'     => 'works',
+                    'pad_counts'   => false,
+                );
+                $categories = get_categories( $args );
+                if( $categories ){
+                foreach( $categories as $cat ){ ?>
                 <div class="intro-slide-item-wrap ">
                         <div class="intro-slide-item">
-
-                            <?php $slideloop->the_post(); ?>
                             <?php the_post_thumbnail() ;?>
-                            <h4 class="title title-bold title-light title-trasf"><?php the_title(); ?></h4>
-
+                            <h4 class="title title-bold title-light title-trasf"><?php  echo $cat->cat_name ?></h4>
                         </div>
                 </div>
-                <?php endwhile; wp_reset_postdata(); ?>
+                <?php }}?>
                 <?php endif; ?>
             </div>
-
             <!--end intro-->
         </div>
     </section>
