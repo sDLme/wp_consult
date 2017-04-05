@@ -292,7 +292,7 @@ p {
     color: #fff; }
   .section-bg-blog {
     background: #e7eff1;
-    margin-bottom: 45px}
+    padding-bottom: 45px}
   .section-bg-foot-bg {
     background: #262829; }
 
@@ -319,24 +319,33 @@ p {
 .title {
   font-size: 18px;
   font-family: 'Montserrat', sans-serif;
-  color: #343a3b; }
-  .title-light {
-    color: #fff; }
+  color: #fff;}
+  .title-dark {
+    color: #343a3b; }
   .title-bold {
     font-weight: 700; }
   .title-trasf {
+    margin: 1rem 0;
     text-transform: uppercase; }
   @media (max-width: 768px) {
     .title {
       font-size: 15px; } }
 
-.description {
+
+.description > p  {
   line-height: 28px;
   font-family: 'Domine', serif;
-  font-weight: 400; }
-  .description-light {
+  font-weight: 400;
+  color: #838b8c}
+  .description-work > p {
+    line-height: 28px;
+    font-family: 'Domine', serif;
+    font-weight: 400;
+    color: #fff;}
+  .description-light > p {
     color: #fff; }
-  .description-just-cnt {
+  .description-dark > p {color: #838b8c}
+  .description-just-cnt > p {
     width: 60%;
     margin: 40px auto 0;
     text-align: center; }
@@ -615,9 +624,11 @@ padding-bottom: 50px}
   }
   }
   .project-list-item .project-description {
+
     padding: 40px 30px; }
   .project-list-item:nth-child(odd) .project-description {
-    background: #f6961b; }
+    background: #f6961b;
+    color: #fff}
   .project-list-item:nth-child(even) {
     display: -webkit-box;
     display: flex;
@@ -627,7 +638,8 @@ padding-bottom: 50px}
     .project-list-item .meta-title {
       z-index: 2; }
     .project-list-item:nth-child(even) .project-description {
-      border: 1px solid #dae5e8; }
+      border: 1px solid #dae5e8;
+      color:#838b8c; }
   .project-list-item .project-img-slide {
     padding: 0; }
 
@@ -943,6 +955,16 @@ padding-bottom: 50px}
 .contact-wrapp {
   margin-bottom: 50px;
 }
+@media (max-width:768px) {
+  .contact-wrapp {
+    flex-wrap: wrap;
+  }
+}
+@media (min-width:768px) {
+  .form {
+    margin-right: 30px;
+  }
+}
 .contact-title   {
   margin-bottom: 59px;
   line-height: 2em;
@@ -977,7 +999,7 @@ padding-bottom: 50px}
   margin: auto;
   width: 100%;
   text-align: center;
-  background: rebeccapurple;
+  background: #03b6e7;
 
 }
 .mobile-nav-item {
@@ -991,4 +1013,15 @@ padding-bottom: 50px}
 }
 .email-797 {
   display: flex;
+}
+.map {
+  max-width: 840px;
+  width: 100%;
+
+}
+.my-sub {
+  color: #fff;
+}
+.my-sub:hover {
+  background: #323334;
 }

@@ -24,7 +24,7 @@
     <section class="<?php if (!is_front_page() ) :  ?>other-height<?php  endif ;?> intro section-pd-bottom d-flex flex-column ">
         <header class="site-head">
             <div class="container">
-                <div class=" d-flex justify-content-between flex-wrap align-items-baseline  ">
+                <div class=" d-flex justify-content-between flex-wrap align-items-stretch">
                     <div class="my-logo ">
                         <a href="/">
                             <?php
@@ -100,19 +100,13 @@
                 if( $categories ){
                 foreach( $categories as $cat ){ ?>
                 <div class="intro-slide-item-wrap ">
-                   <?php // получаем ID термина на странице термина
-                    $term_id = get_queried_object_id();
-
+                   <?php
                     // получим ID картинки из метаполя термина
                     $image_id = get_term_meta( $cat->term_id, '_thumbnail_id', 1 );
-
                     // ссылка на полный размер картинки по ID вложения
                     $image_url = wp_get_attachment_image_url( $image_id, 'full' );
-
                     ;?>
-
                         <div class="intro-slide-item">
-
                                 <?php echo '<img src="'. $image_url .'" alt="" />'; ?>
                             <h4 class="title title-bold title-light title-trasf"><?php  echo $cat->cat_name ?></h4>
                         </div>

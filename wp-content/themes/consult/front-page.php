@@ -64,7 +64,7 @@
             <?php while ($servisloop->have_posts()) :
             $servisloop->the_post(); ?>
             <li class="feature-list-item col-md-4">
-                    <h4 class="title title-bold"><?php the_title(); ?></h4>
+                    <h4 class="title title-dark title-bold"><?php the_title(); ?></h4>
                     <p class="description"><?php the_excerpt(); ?></p>
             </li>
             <?php endwhile; wp_reset_postdata(); ?>
@@ -117,8 +117,8 @@
                     <?php endif ;?>
                 </ul>
                 <div class="project-description">
-                    <h4 class="title title-light title-trasf title-bold"><?php the_title(); ?></h4>
-                    <p class="description description-light"><?php the_excerpt(); ?></p>
+                    <h4 class="<?php if($counter%2 === 0) {?>title-dark<?php }?> title  title-trasf title-bold"><?php the_title(); ?></h4>
+                    <div class=" description-work <?php if($counter%2 === 0) {?>description-dark<?php }; ?>"><?php the_excerpt(); ?></div>
                 </div>
                 <?php else : ;?>
                 <?php endif ;?>
@@ -203,7 +203,7 @@
                 </div>
                 <div class="blog-content">
                     <span class="blog-item-date">February 22, 2016 </span>
-                    <h4 class="title title-bold title-trasf"><?php the_title(); ?></h4>
+                    <h4 class="title title-dark title-bold title-trasf"><?php the_title(); ?></h4>
                     <p class="description"><?php the_excerpt(); ?></p>
                 </div>
             </li>

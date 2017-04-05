@@ -10,6 +10,7 @@
 
         <div id="ajax-content">
             <?php
+            $counter = 0;
             $args = array(
                 'order' => 'ASC',
                 'posts_per_page' => 2,
@@ -21,6 +22,7 @@
             <ul class="project-list row">
                 <?php while ($projectsloop->have_posts()) :
                 $projectsloop->the_post();
+                $counter++;
                  ;?>
                 <li class="project-list-item col-md-6">
                     <p class="meta-title"><?php echo the_terms($post->ID,'works') ; ?></p>
@@ -34,8 +36,8 @@
                         <?php endif; ?>
                     </ul>
                     <div class="project-description">
-                        <h4 class="title title-light title-trasf title-bold"><?php the_title(); ?></h4>
-                        <p class="description description-light"><?php the_content(); ?></p>
+                        <h4 class="title <?php if($counter%2 === 0) {?>title-dark<?php }?> title-trasf title-bold"><?php the_title(); ?></h4>
+                        <div class=" description-work <?php if($counter%2 === 0) {?>description-dark<?php }; ?>"><?php the_content(); ?></div>
                     </div>
 
 

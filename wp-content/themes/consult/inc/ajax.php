@@ -15,10 +15,11 @@ function true_load_posts()
     $args['paged'] = $_POST['page'] +1 ; // следующая страница
     $projects_query = new WP_Query($args);
     $result = '';
-
+    $counter = 0;
          if( $projects_query->have_posts() ):
              while( $projects_query->have_posts() ) : $projects_query->the_post();
              global $post;
+                 $counter++;
              $post_terms = get_the_terms($post->ID, 'works');
              $post_terms_names = array_map( function($term) {
                  return $term->name;

@@ -38,11 +38,7 @@ function consult_scripts() {
 
 add_action( 'wp_enqueue_scripts', 'consult_scripts' );
 
-add_shortcode('taximage', 'taximage');
-function taximage() {
-    global $post;
-    return apply_filters( 'taxonomy-images-list-the-terms', '', array('post_id' => $post->ID, 'taxonomy' => 'works') );
-}
+
 
 //поддержка групировки ссылок
 add_filter( 'pre_option_link_manager_enabled', '__return_true' );
@@ -71,6 +67,40 @@ function my_add_excerpts_to_pages() {
 	     add_post_type_support( 'page', 'excerpt' );
 	}
 
+
+//add taxonomy name to widget in footer
+// Сначала мы создаем функцию
+function list_terms_custom_taxonomy( $atts ) {
+
+// Внутри функции мы извлекаем параметр произвольной таксономии нашего шорткода
+
+    extract( shortcode_atts( array(
+        'custom_taxonomy' => '',
+    ), $atts ) );
+
+//параметры для функции wp_list_categories
+    $args = array(
+        taxonomy => $custom_taxonomy,
+        title_li => '',
+    );
+
+// Оборачиваем ее в маркированный список
+    $date = '<ul>';
+    $categories = get_categories($args);
+    foreach ($categories as $category) {
+        $date .= '<li class="page_item">' .  $category->cat_name . '</li>';
+    }
+    $date .= '</ul>';
+    return $date;
+}
+
+// Добавляем шорткод, который исполняет нашу функцию
+add_shortcode( 'ct_terms', 'list_terms_custom_taxonomy' );
+
+//Разрешаем выполнение шорткодов в текстовых виджетах
+
+add_filter('widget_text', 'do_shortcode');
+//////
 /**
  * Custom template tags for this theme.
  */
