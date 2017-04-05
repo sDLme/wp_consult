@@ -291,7 +291,8 @@ p {
     background: #03b6e7;
     color: #fff; }
   .section-bg-blog {
-    background: #e7eff1; }
+    background: #e7eff1;
+    margin-bottom: 45px}
   .section-bg-foot-bg {
     background: #262829; }
 
@@ -710,7 +711,7 @@ padding-bottom: 50px}
     font-family: 'Domine', serif; }
 
 .blog-list {
-  margin: 45px 0 60px; }
+  margin: 45px 0 0; }
   .blog-list .blog-list-item {
     display: -webkit-box;
     display: flex;

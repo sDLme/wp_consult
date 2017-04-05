@@ -59,12 +59,12 @@
                                 </button>
                                 <div class="collapse navbar-collapse  my-nav-bar-position" id="bs-example-navbar-collapse-1">
                                     <ul class="nav navbar-nav my-nav-flex navbar-left">
-                                        <li class="mobile-nav-item"><a href="#">Home</a></li>
-                                        <li class="mobile-nav-item"><a href="#">about us</a></li>
+                                        <li class="mobile-nav-item"><a href="/">Home</a></li>
+                                        <li class="mobile-nav-item"><a href="/about-us">about us</a></li>
                                         <li class="mobile-nav-item"><a href="#">industry</a></li>
-                                        <li class="mobile-nav-item"><a href="#">services</a></li>
+                                        <li class="mobile-nav-item"><a href="/services">services</a></li>
                                         <li class="mobile-nav-item"><a href="#">pages</a></li>
-                                        <li class="mobile-nav-item"><a href="#">Contact us</a></li>
+                                        <li class="mobile-nav-item"><a href="/contact">Contact us</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -100,8 +100,20 @@
                 if( $categories ){
                 foreach( $categories as $cat ){ ?>
                 <div class="intro-slide-item-wrap ">
+                   <?php // получаем ID термина на странице термина
+                    $term_id = get_queried_object_id();
+
+                    // получим ID картинки из метаполя термина
+                    $image_id = get_term_meta( $cat->term_id, '_thumbnail_id', 1 );
+
+                    // ссылка на полный размер картинки по ID вложения
+                    $image_url = wp_get_attachment_image_url( $image_id, 'full' );
+
+                    ;?>
+
                         <div class="intro-slide-item">
-                            <?php the_post_thumbnail() ;?>
+
+                                <?php echo '<img src="'. $image_url .'" alt="" />'; ?>
                             <h4 class="title title-bold title-light title-trasf"><?php  echo $cat->cat_name ?></h4>
                         </div>
                 </div>

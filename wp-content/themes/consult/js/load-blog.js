@@ -3,7 +3,6 @@
  */
 jQuery(function($){
     $('#blog_true_loadmore a').click(function(e){
-        console.log('hjhkhjkj')
         e.preventDefault();
         e.stopPropagation();
 
@@ -22,7 +21,6 @@ jQuery(function($){
                     blog_current_page++;
                     $('#blog-ajax-container .blog-list').append(result);
                     if (blog_current_page == blog_max_pages) $("#blog_true_loadmore").css('display','none');
-                    console.log('ghjghjfkd')
                 } else {
                     $('#blog_true_loadmore').css('display','none');
                 }

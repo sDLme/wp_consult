@@ -38,6 +38,12 @@ function consult_scripts() {
 
 add_action( 'wp_enqueue_scripts', 'consult_scripts' );
 
+add_shortcode('taximage', 'taximage');
+function taximage() {
+    global $post;
+    return apply_filters( 'taxonomy-images-list-the-terms', '', array('post_id' => $post->ID, 'taxonomy' => 'works') );
+}
+
 //поддержка групировки ссылок
 add_filter( 'pre_option_link_manager_enabled', '__return_true' );
 
