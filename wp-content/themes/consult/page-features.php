@@ -18,7 +18,7 @@
                 <?php while ($feachloop->have_posts()) :
                 $feachloop->the_post(); ?>
                 <li class="feature-list-item col-md-4">
-                    <h4 class="title title-bold title-trasf"><?php the_title(); ?></h4>
+                    <h4 class="title title-dark title-bold title-trasf"><?php the_title(); ?></h4>
                     <p class="description"><?php the_content(); ?></p>
                     <?php endwhile;
                     wp_reset_postdata(); ?>

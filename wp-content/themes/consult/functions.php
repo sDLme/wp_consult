@@ -88,7 +88,7 @@ function list_terms_custom_taxonomy( $atts ) {
     $date = '<ul>';
     $categories = get_categories($args);
     foreach ($categories as $category) {
-        $date .= '<li class="page_item">' .  $category->cat_name . '</li>';
+        $date .= '<li class="page_item"><a href="'.  get_term_link(get_the_ID()) .'" >' .  $category->cat_name . '</a></li>';
     }
     $date .= '</ul>';
     return $date;

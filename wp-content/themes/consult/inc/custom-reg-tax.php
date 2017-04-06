@@ -30,7 +30,7 @@ function create_project_taxonomies() {
         'show_ui'           => true,
         'show_admin_column' => true,
         'query_var'         => true,
-        'rewrite'           => array( 'slug' => 'projects', 'with_front' => true),
+        'rewrite'           => array( 'slug' => 'industry', 'with_front' => true),
     );
 
     register_taxonomy( 'works', array( 'consult_projects' ), $args );

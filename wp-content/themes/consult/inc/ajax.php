@@ -30,7 +30,6 @@ function true_load_posts()
              '<li class="project-list-item col-md-6">
                  <p class="meta-title">' . $post_terms_names . '</p>
                  <ul class="project-img-slide">';
-
              if (has_post_thumbnail()) {
                  $result .= get_the_post_thumbnail();
              } else {
@@ -41,7 +40,7 @@ function true_load_posts()
              }
          $result .= '</ul>
         <div class="project-description">
-            <h4 class="title title-light title-trasf title-bold">' . get_the_title() . '</h4>
+            <h4 class="title title-light title-trasf title-bold"><a href="'. get_the_permalink(get_the_ID()) .'" >' . get_the_title() . '</a></h4>
             <p class="description description-light">' . get_the_content() . '</p>
         </div>
         </li>';

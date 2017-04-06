@@ -19,7 +19,7 @@
             <li class="services-list-item-wrap col-md-4">
                 <div class="services-list-item">
                     <div class="thumbnail-wrapp"><?php the_post_thumbnail() ?></div>
-                    <h4 class="title title-bold title-trasf"><?php the_title(); ?></h4>
+                    <h4 class="title title-dark title-bold title-trasf"><?php the_title(); ?></h4>
                     <p class="description"><?php the_content(); ?></p>
                 </div>
                 <?php endwhile;

@@ -74,7 +74,7 @@
                 </div>
             </div>
         </header>
-        </div>
+
         <div class="container">
             <!--intro-->
             <h2 class="site-title site-title-light">
@@ -101,14 +101,14 @@
                 foreach( $categories as $cat ){ ?>
                 <div class="intro-slide-item-wrap ">
                    <?php
-                    // получим ID картинки из метаполя термина
+                    // get ID of img from termyns fild
                     $image_id = get_term_meta( $cat->term_id, '_thumbnail_id', 1 );
-                    // ссылка на полный размер картинки по ID вложения
+                    // link on full size img  with ID
                     $image_url = wp_get_attachment_image_url( $image_id, 'full' );
                     ;?>
                         <div class="intro-slide-item">
                                 <?php echo '<img src="'. $image_url .'" alt="" />'; ?>
-                            <h4 class="title title-bold title-light title-trasf"><?php  echo $cat->cat_name ?></h4>
+                            <h4 class="title title-bold title-light title-trasf"><a href="<?php echo get_permalink(); ?>"><?php  echo $cat->cat_name ?></a></h4>
                         </div>
                 </div>
                 <?php }}?>

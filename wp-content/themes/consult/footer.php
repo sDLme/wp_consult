@@ -35,8 +35,18 @@
 <div class=" col-md-8 col-lg-5" >
     <h5 class="title title-trasf title-light"><?php echo get_theme_mod('form_title'); ?></h5>
     <p class="description"><?php echo get_theme_mod('form_description'); ?></p>
-    <div class="contact-inputs">
-        <?php  echo do_shortcode("[contact-form-7 id=\"153\" title=\"Contact form footer\"]")?>
+    <div>
+        <!-- Begin MailChimp Signup Form-->
+        <link href="//cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
+        <div id="mc_embed_signup">
+            <form action="//pantheonsite.us15.list-manage.com/subscribe/post?u=a622a84874635138ecbdea2c7&amp;id=bbbe2dd54b" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                <div id="mc_embed_signup_scroll" class="contact-inputs">
+                   <span class="email-797"><input type="email" value="" name="EMAIL" class="contact-input-item" id="mce-EMAIL" placeholder="email address" required></span>
+                    <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="wpcf7-form-control wpcf7-submit btn-prime my-sub">
+                </div>
+            </form>
+        </div>
+        <!--End mc_embed_signup-->
     </div>
 </div>
 </div>

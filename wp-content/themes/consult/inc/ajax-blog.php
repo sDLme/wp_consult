@@ -22,7 +22,7 @@ function blog_load_feature(){
             <div class="blog-content">
                 <span class="blog-item-date"><?php the_time('F j, Y '); ?></span>
                 <?php the_title('
-                                        <h4 class="title title-bold title-trasf">
+                                        <h4 class="title title-dark title-bold title-trasf">
                                         <a href="' . esc_url(get_permalink()) . '" rel="bookmark" >', '</a>
                                         </h4>'); ?>
                 <p class="description"><?php the_excerpt(); ?></p>

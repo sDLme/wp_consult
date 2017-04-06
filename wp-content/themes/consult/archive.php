@@ -8,7 +8,7 @@
  get_header(); ?>
     <section class="section-pd">
         <div class="container">
-            <h3 class="section-title industry"><?php wp_title("", true); ?></h3>
+            <h3 class="section-title"><?php wp_title("", true); ?></h3>
             <div class="row">
             <?php
 

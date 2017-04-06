@@ -64,7 +64,7 @@
             <?php while ($servisloop->have_posts()) :
             $servisloop->the_post(); ?>
             <li class="feature-list-item col-md-4">
-                    <h4 class="title title-dark title-bold"><?php the_title(); ?></h4>
+                    <h4 class="title title-dark title-bold"><a href="<?php echo get_permalink(); ?>"><?php the_title(); ?></a></h4>
                     <p class="description"><?php the_excerpt(); ?></p>
             </li>
             <?php endwhile; wp_reset_postdata(); ?>
@@ -73,7 +73,7 @@
         <div class="contact-us-area d-flex justify-content-between align-items-center">
             <p class="contact-description ">If you want to boost your business Contact us</p>
             <?php
-            $url = "http://consult.loc/contact/" ;
+            $url = "/contact" ;
             $page_ID = url_to_postid($url);
             ?>
             <a href="<?php the_permalink($page_ID); ?>" class="btn-prime">Boost your business</a>
@@ -117,7 +117,7 @@
                     <?php endif ;?>
                 </ul>
                 <div class="project-description">
-                    <h4 class="<?php if($counter%2 === 0) {?>title-dark<?php }?> title  title-trasf title-bold"><?php the_title(); ?></h4>
+                    <h4 class="<?php if($counter%2 === 0) {?>title-dark<?php }?> title  title-trasf title-bold"><a href="<?php echo get_the_permalink(get_the_ID()) ; ?>"><?php the_title(); ?></a></h4>
                     <div class=" description-work <?php if($counter%2 === 0) {?>description-dark<?php }; ?>"><?php the_excerpt(); ?></div>
                 </div>
                 <?php else : ;?>
@@ -125,7 +125,9 @@
                 <?php endwhile; wp_reset_postdata(); ?>
             </li>
         </ul>
-        <div class="center-btn"><a href="/project" class="btn-prime btn-prime-center">Full Projects</a></div>
+        <div class="center-btn">
+            <a href="/industry" class="btn-prime btn-prime-center">Full Projects</a>
+        </div>
     </div>
 </section>
 <!--END PORTFOLIO-->
@@ -150,7 +152,7 @@
                     <div class="thumbnail-wrapp">
                         <?php the_post_thumbnail()?>
                     </div>
-                    <h4 class="title title-bold title-trasf"><?php the_title(); ?></h4>
+                    <h4 class="title title-dark title-bold title-trasf"><a href="<?php echo get_permalink(); ?>"><?php the_title(); ?></a></h4>
                     <p class="description"><?php the_excerpt(); ?></p>
                 </div>
                 <?php endwhile; wp_reset_postdata(); ?>
@@ -203,7 +205,7 @@
                 </div>
                 <div class="blog-content">
                     <span class="blog-item-date">February 22, 2016 </span>
-                    <h4 class="title title-dark title-bold title-trasf"><?php the_title(); ?></h4>
+                    <h4 class="title title-dark title-bold title-trasf"><a href="<?php echo get_permalink(); ?>"><?php the_title(); ?></a></h4>
                     <p class="description"><?php the_excerpt(); ?></p>
                 </div>
             </li>
@@ -220,19 +222,19 @@
         <ul class="contact-list row">
             <li class="contact-list-item-wrap col-md-4">
                 <div class="contact-list-item">
-                    <h4 class="title title-bold">Email</h4>
+                    <h4 class="title title-dark title-bold">Email</h4>
                     <a href="<?php echo get_theme_mod('consult-contact-email'); ?>" class="contact-atr"><?php echo get_theme_mod('consult-contact-email-label'); ?></a>
                 </div>
             </li>
             <li class="contact-list-item-wrap col-md-4 ">
                 <div class="contact-list-item">
-                    <h4 class="title title-bold">Call Us</h4>
+                    <h4 class="title title-dark title-bold">Call Us</h4>
                     <a href="tel:<?php echo get_theme_mod('consult-contact-call'); ?>" class="contact-atr"><?php echo get_theme_mod('consult-contact-call-label'); ?></a>
                 </div>
             </li>
             <li class="contact-list-item-wrap col-md-4">
                 <div class="contact-list-item">
-                    <h4 class="title title-bold">Career</h4>
+                    <h4 class="title title-dark title-bold">Career</h4>
                     <a href="mailto:<?php echo get_theme_mod('consult-contact-career'); ?>" class="contact-atr"><?php echo get_theme_mod('consult-contact-career-label'); ?></a>
                 </div>
             </li>
