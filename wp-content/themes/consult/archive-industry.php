@@ -7,7 +7,9 @@
 <section class="section-pd my-industri">
     <div class="container">
         <h3 class="section-title"><?php the_title(); ?></h3>
-        <?php
+        <div class="select-taxonomy d-flex align-items-baseline justify-content-center">
+            <h5 class="title title-dark">CHOOSE YOUR INDUSTRY</h5>
+            <?php
         $args = array(
             'type'         => 'post',
             'child_of'     => 0,
@@ -34,7 +36,7 @@
         }
         $select.= "</select>";
         echo $select;
-        ?>
+        ?></div>
         <script type="text/javascript">
             var dropdown = document.getElementById("cat");
             function onCatChange() {

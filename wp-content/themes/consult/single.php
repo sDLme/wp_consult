@@ -7,7 +7,7 @@
  */
  get_header(); ?>
 
-<section class="section-pd">
+<section class="section-pd singl">
  <div class="container">
   <h3 class="section-title"><?php wp_title("", true); ?></h3>
   <div class="row">

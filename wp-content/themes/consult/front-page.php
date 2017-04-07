@@ -91,7 +91,10 @@
         $args = array(
             'order' => 'ASC',
             'post_type' => 'consult_projects',
-            'post__in'=> array(89, 86));
+            'post__in'=>  array(
+            get_theme_mod('project_post_edit-one'),
+            get_theme_mod('project_post_edit-two'),
+            ));
         $projectsloop = new WP_Query($args);
         ?>
         <ul class="project-list row">

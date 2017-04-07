@@ -21,7 +21,7 @@
 <main>
     <!--INTRO-->
 
-    <section class="<?php if (!is_front_page() ) :  ?>other-height<?php  endif ;?> intro section-pd-bottom d-flex flex-column ">
+    <section class="<?php if (!is_front_page() ) :  ?>other-height<?php  endif ;?> intro <?php if (is_front_page() ) :  ?>section-pd-bottom<?php  endif ;?> d-flex flex-column ">
         <header class="site-head">
             <div class="container">
                 <div class=" d-flex justify-content-between flex-wrap align-items-stretch">
@@ -75,14 +75,15 @@
             </div>
         </header>
 
+        <?php if ( is_front_page() ) : ?>
         <div class="container">
             <!--intro-->
             <h2 class="site-title site-title-light">
                 <span class="site-title-less"><?php echo get_theme_mod('intro_title'); ?></span>
-                <?php echo get_theme_mod('intro_description'); ?>
+                <?php if (is_front_page()) { echo get_theme_mod('intro_description');}  ?>
             </h2>
 
-            <?php if ( is_front_page() ) : ?>
+
             <div class="intro-slide">
                 <?php
                 $args = array(
@@ -112,9 +113,10 @@
                         </div>
                 </div>
                 <?php }}?>
-                <?php endif; ?>
+
             </div>
             <!--end intro-->
         </div>
+        <?php endif; ?>
     </section>
 

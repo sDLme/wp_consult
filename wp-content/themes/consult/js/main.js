@@ -52,7 +52,7 @@ $(document).ready(function(){
 ///testimonials slider
     $('.slide-testimon').slick({
        dots: true,
-        autoplay: true,
+       // autoplay: true,
         nextArrow: false,
        prevArrow: false,
     });

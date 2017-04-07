@@ -386,7 +386,7 @@ padding-bottom: 50px}
     background: #03b6e7 url("../images/head-mail-icone.png") center no-repeat; }
 
 .intro {
-  height: 100vh;
+  min-height: 100%;
   background: url("../images/intro-bg.jpg") center no-repeat;
   background-size: cover; }
   @media (max-width: 992px) {
@@ -694,10 +694,16 @@ padding-bottom: 50px}
       background: url("../images/test-item-one.jpg") center no-repeat;
       background-size: cover;
       opacity: 0.6; }
-      .test-wrapp .slick-dots li:active, .test-wrapp .slick-dots li:hover {
+       /*.slick-active {
+        -webkit-transform: scale(1.1, 1.1);
+                transform: scale(1.1, 1.1);
+                opacity: 1;}*/
+      .test-wrapp .slick-dots li:active,
+      .test-wrapp .slick-dots li:hover {
         -webkit-transform: scale(1.2, 1.2);
                 transform: scale(1.2, 1.2);
         opacity: 1; }
+
       .test-wrapp .slick-dots li:nth-child(2) {
         background: url("../images/test-item-two.jpg") center no-repeat;
         background-size: contain; }
@@ -1025,4 +1031,14 @@ padding-bottom: 50px}
 }
 .my-sub:hover {
   background: #323334;
+}
+.postform {
+  margin-left: 20px;
+  outline: none;
+  border: none;
+}
+
+/* contact */
+.my-cap >div {
+  margin: 0 auto ;
 }

@@ -238,6 +238,65 @@ function consult_customize_register($wp_customize)
         'type' => 'select',
     )));
 ///-----end feature section-----///
+    /// Portfilio
+    ///function for section
+    if( class_exists( 'WP_Customize_Control' ) ):
+        class WP_Customize_Portfolio_Post_Control extends WP_Customize_Control {
+            public $type = 'services_post_dropdown';
+
+            public function render_content() {
+
+                $latest = new WP_Query( array(
+                    'post_type'   => 'consult_projects',
+                    'post_status' => 'publish',
+                    'orderby'     => 'date',
+                    'order'       => 'DESC'
+                ));
+
+                ?>
+                <label>
+                    <span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
+                    <select <?php $this->link(); ?>>
+                        <?php
+                        while( $latest->have_posts() ) {
+                            $latest->the_post();
+                            echo "<option " . selected( $this->value(), get_the_ID() ) . " value='" . get_the_ID() . "'>" . the_title( '', '', false ) . "</option>";
+                        }
+                        ?>
+                    </select>
+                </label>
+                <?php
+            }
+        }
+    endif;
+    $wp_customize->add_section( 'portfolio_posts' , array(
+        'title'      => __( 'Portfolio posts', 'consult' ),
+        'priority'   => 32,
+        'panel' => 'front_page',
+    ) );
+    $wp_customize->add_setting( 'project_post_edit-one' , array(
+        'default'     => '',
+        'transport'   => 'refresh',
+    ) );
+    $wp_customize->add_control(  new WP_Customize_Portfolio_Post_Control($wp_customize, 'project_post_edit-one', array(
+        'label' => __( 'project post 1', 'consult' ),
+        'section' => 'portfolio_posts',
+        'settings' => 'project_post_edit-one',
+        'type' => 'select',
+    )));
+
+    $wp_customize->add_setting( 'project_post_edit-two' , array(
+        'default'     => '',
+        'transport'   => 'refresh',
+    ) );
+    $wp_customize->add_control(  new WP_Customize_Portfolio_Post_Control($wp_customize, 'project_post_edit-two', array(
+        'label' => __( 'Portfolio post 2', 'consult' ),
+        'section' => 'portfolio_posts',
+        'settings' => 'project_post_edit-two',
+        'type' => 'select',
+    )));
+
+    ///end portfolio
 
 ///function for section
     if( class_exists( 'WP_Customize_Control' ) ):

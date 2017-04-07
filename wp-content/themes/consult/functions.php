@@ -75,10 +75,9 @@ function list_terms_custom_taxonomy( $atts ) {
 // Внутри функции мы извлекаем параметр произвольной таксономии нашего шорткода
 
     extract( shortcode_atts( array(
-        'custom_taxonomy' => '',
+        'custom_taxonomy' => 'works',
     ), $atts ) );
 
-//параметры для функции wp_list_categories
     $args = array(
         taxonomy => $custom_taxonomy,
         title_li => '',
@@ -88,7 +87,8 @@ function list_terms_custom_taxonomy( $atts ) {
     $date = '<ul>';
     $categories = get_categories($args);
     foreach ($categories as $category) {
-        $date .= '<li class="page_item"><a href="'.  get_term_link(get_the_ID()) .'" >' .  $category->cat_name . '</a></li>';
+
+        $date .= '<li class="page_item"><a href="/industry/' .  $category->slug . '">' .  $category->cat_name . '</a></li>';
     }
     $date .= '</ul>';
     return $date;

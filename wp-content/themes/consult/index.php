@@ -13,12 +13,12 @@
                     <li class="blog-list-item col-lg-6">
                         <div class="blog-img-wrap">
                             <?php if (has_post_thumbnail()) : echo the_post_thumbnail(); ?>
-                            <?php endif; ?>
+                            <?php else : endif; ?>
                         </div>
                         <div class="blog-content">
                             <span class="blog-item-date"><?php the_time('F j, Y '); ?></span>
                            <?php the_title('
-                                        <h4 class="title title-bold title-trasf">
+                                        <h4 class="title title-dark title-bold title-trasf">
                                         <a href="' . esc_url(get_permalink()) . '" rel="bookmark" >', '</a>
                                         </h4>'); ?>
 
