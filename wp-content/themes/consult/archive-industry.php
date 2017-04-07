@@ -8,7 +8,7 @@
     <div class="container">
         <h3 class="section-title"><?php the_title(); ?></h3>
         <div class="select-taxonomy d-flex align-items-baseline justify-content-center">
-            <h5 class="title title-dark">CHOOSE YOUR INDUSTRY</h5>
+            <h5 class="title title-dark title-bold">CHOOSE YOUR INDUSTRY</h5>
             <?php
         $args = array(
             'type'         => 'post',
@@ -28,7 +28,7 @@
 
         $categories = get_categories('taxonomy=works');
         $select = "<select name='cat' id='cat' class='postform'>n";
-        $select.= "<option value='-1'>Select category</option>n";
+        $select.= "<option value='-1'>Select industry</option>n";
         foreach($categories as $category){
             if($category->count > 0){
                 $select.= "<option value='".$category->slug."'>".$category->name."</option>";
@@ -60,7 +60,8 @@
                 <?php while ($projectsloop->have_posts()) :
                 $projectsloop->the_post();
                 $counter++;
-                ;?>
+                $pjwork= CFS()->get('check_show');
+                 if($pjwork==1) : ;?>
                 <li class="project-list-item col-md-6">
                     <p class="meta-title"><?php echo the_terms($post->ID,'works') ; ?></p>
                     <ul class="project-img-slide">
@@ -76,6 +77,7 @@
                         <h4 class="title <?php if($counter%2 === 0) {?>title-dark<?php }?> title-trasf title-bold"><a href="<?php echo get_the_permalink(get_the_ID()) ; ?>"><?php the_title(); ?></a></h4>
                         <div class=" description-work <?php if($counter%2 === 0) {?>description-dark<?php }; ?>"><?php the_content(); ?></div>
                     </div>
+                    <?php endif; ?>
                     <?php endwhile;
                     wp_reset_postdata(); ?>
                 </li>

@@ -142,11 +142,12 @@
         <?php
         $args = array(
             'post_type' => 'consult_services',
-            'post__in'=> array(get_theme_mod('services_post_edit-one'),get_theme_mod('services_post_edit-two'),get_theme_mod('services_post_edit-three'))
-        );
+            'post__in'=> array(
+                get_theme_mod('services_post_edit-one'),
+                get_theme_mod('services_post_edit-two'),
+                get_theme_mod('services_post_edit-three')));
         $servisloop = new WP_Query( $args);
         ?>
-
         <ul class="services-list row">
             <?php while ($servisloop->have_posts()) :
             $servisloop->the_post(); ?>

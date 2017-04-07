@@ -11,8 +11,12 @@ get_header(); ?>
             <h3 class="section-title industry"><?php wp_title("", true); ?></h3>
             <div id="ajax-content">
 
-                <ul class="project-list row">
-                    <?php while (have_posts()) : the_post();
+                <ul class="project-list d-flex justify-content-center">
+
+                    <?php
+                    $counter = 0;
+                    while (have_posts()) : the_post();
+                    $counter++;
                     $pjwork= CFS()->get('check_show') ;?>
                     <?php if($pjwork==1) : ;?>
                     <li class="project-list-item col-md-6">
@@ -27,7 +31,7 @@ get_header(); ?>
                             <?php endif; ?>
                         </ul>
                         <div class="project-description">
-                            <h4 class="title title-light title-trasf title-bold"><?php the_title(); ?></h4>
+                            <h4 class="title <?php if($counter%2 === 0) {?>title-dark<?php }?> title-light title-trasf title-bold"><a href="<?php echo get_the_permalink(get_the_ID()) ; ?>"><?php the_title(); ?></a></h4>
                             <p class="description description-light"><?php the_content(); ?></p>
                         </div>
                         <?php else : ;?>

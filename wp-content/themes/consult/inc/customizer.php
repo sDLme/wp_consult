@@ -52,97 +52,96 @@ function consult_customize_register($wp_customize)
         'settings' => 'intro-img-upload',
     )));
 
-    if( class_exists( 'WP_Customize_Control' ) ):
-        class WP_Customize_Sub_Pages_Control extends WP_Customize_Control {
-            public $type = 'sub_pages_dropdown';
-
-            public function render_content() {
-
-                $latest = new WP_Query( array(
-                    'post_type'   => 'page',
-                    'post_parent' => '15',
-                    'post_status' => 'publish',
-                    'orderby'     => 'date',
-                    'order'       => 'DESC'
-                ));
-
-                ?>
-                <label>
-                    <span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
-                    <select <?php $this->link(); ?>>
-                        <?php
-                        while( $latest->have_posts() ) {
-                            $latest->the_post();
-                            echo "<option " . selected( $this->value(), get_the_ID() ) . " value='" . get_the_ID() . "'>" . the_title( '', '', false ) . "</option>";
-                        }
-                        ?>
-                    </select>
-                </label>
-                <?php
-            }
-        }
-    endif;
-
-    $wp_customize->add_section('intro_slider', array(
-        "title" => __('Welcom section carousel', 'consult'),
-        'priority' => 30,
-        'panel' => 'front_page',
-
-    ));
-    $wp_customize->add_setting('intro_slide_one', array(
-        'default' => '',
-        'transport' => 'refresh',
-    ));
-    $wp_customize->add_control(new WP_Customize_Sub_Pages_Control($wp_customize, 'intro_slide_one', array(
-        'label' => __('Carousel item one', 'consult'),
-        'section' => 'intro_slider',
-        'settings' => 'intro_slide_one',
-        'type' => 'select'
-    )));
-
-    $wp_customize->add_setting('intro_slide_two', array(
-        'default' => '',
-        'transport' => 'refresh',
-    ));
-    $wp_customize->add_control(new WP_Customize_Sub_Pages_Control($wp_customize, 'intro_slide_two', array(
-        'label' => __('Carousel item two', 'consult'),
-        'section' => 'intro_slider',
-        'settings' => 'intro_slide_two',
-        'type' => 'select'
-    )));
-
-    $wp_customize->add_setting('intro_slide_three', array(
-        'default' => '',
-        'transport' => 'refresh',
-    ));
-    $wp_customize->add_control(new WP_Customize_Sub_Pages_Control($wp_customize, 'intro_slide_three', array(
-        'label' => __('Carousel item three', 'consult'),
-        'section' => 'intro_slider',
-        'settings' => 'intro_slide_three',
-        'type' => 'select'
-    )));
-
-    $wp_customize->add_setting('intro_slide_four', array(
-        'default' => '',
-        'transport' => 'refresh',
-    ));
-    $wp_customize->add_control(new WP_Customize_Sub_Pages_Control($wp_customize, 'intro_slide_four', array(
-        'label' => __('Carousel item four', 'consult'),
-        'section' => 'intro_slider',
-        'settings' => 'intro_slide_four',
-        'type' => 'select'
-    )));
-
-    $wp_customize->add_setting('intro_slide_five', array(
-        'default' => '',
-        'transport' => 'refresh',
-    ));
-    $wp_customize->add_control(new WP_Customize_Sub_Pages_Control($wp_customize, 'intro_slide_five', array(
-        'label' => __('Carousel item five', 'consult'),
-        'section' => 'intro_slider',
-        'settings' => 'intro_slide_five',
-        'type' => 'select'
-    )));
+//    if( class_exists( 'WP_Customize_Control' ) ):
+//        class WP_Customize_Sub_Pages_Control extends WP_Customize_Control {
+//            public $type = 'sub_pages_dropdown';
+//
+//           public function render_content() {
+//
+//        $latest = new WP_Query( array(
+//                    'post_type'   => 'page',
+//                    'post_status' => 'publish',
+//                    'orderby'     => 'date',
+//                    'order'       => 'DESC'
+//                ));
+//
+//                ?>
+<!--                <label>-->
+<!--                    <span class="customize-control-title">--><?php //echo esc_html( $this->label ); ?><!--</span>-->
+<!--                    <select --><?php //$this->link(); ?><!-->-->
+<!--                        --><?php
+//                        while( $latest->have_posts() ) {
+//                            $latest->the_post();
+//                            echo "<option " . selected( $this->value(), get_the_ID() ) . " value='" . get_the_ID() . "'>" . the_title( '', '', false ) . "</option>";
+//                        }
+//                        ?>
+<!--                    </select>-->
+<!--                </label>-->
+<!--                --><?php
+//            }
+//        }
+//    endif;
+//
+//    $wp_customize->add_section('intro_slider', array(
+//        "title" => __('Welcom section carousel', 'consult'),
+//        'priority' => 30,
+//        'panel' => 'front_page',
+//
+//    ));
+//    $wp_customize->add_setting('intro_slide_one', array(
+//        'default' => '',
+//        'transport' => 'refresh',
+//    ));
+//    $wp_customize->add_control(new WP_Customize_Sub_Pages_Control($wp_customize, 'intro_slide_one', array(
+//        'label' => __('Carousel item one', 'consult'),
+//        'section' => 'intro_slider',
+//        'settings' => 'intro_slide_one',
+//        'type' => 'select'
+//    )));
+//
+//    $wp_customize->add_setting('intro_slide_two', array(
+//        'default' => '',
+//        'transport' => 'refresh',
+//    ));
+//    $wp_customize->add_control(new WP_Customize_Sub_Pages_Control($wp_customize, 'intro_slide_two', array(
+//        'label' => __('Carousel item two', 'consult'),
+//        'section' => 'intro_slider',
+//        'settings' => 'intro_slide_two',
+//        'type' => 'select'
+//    )));
+//
+//    $wp_customize->add_setting('intro_slide_three', array(
+//        'default' => '',
+//        'transport' => 'refresh',
+//    ));
+//    $wp_customize->add_control(new WP_Customize_Sub_Pages_Control($wp_customize, 'intro_slide_three', array(
+//        'label' => __('Carousel item three', 'consult'),
+//        'section' => 'intro_slider',
+//        'settings' => 'intro_slide_three',
+//        'type' => 'select'
+//    )));
+//
+//    $wp_customize->add_setting('intro_slide_four', array(
+//        'default' => '',
+//        'transport' => 'refresh',
+//    ));
+//    $wp_customize->add_control(new WP_Customize_Sub_Pages_Control($wp_customize, 'intro_slide_four', array(
+//        'label' => __('Carousel item four', 'consult'),
+//        'section' => 'intro_slider',
+//        'settings' => 'intro_slide_four',
+//        'type' => 'select'
+//    )));
+//
+//    $wp_customize->add_setting('intro_slide_five', array(
+//        'default' => '',
+//        'transport' => 'refresh',
+//    ));
+//    $wp_customize->add_control(new WP_Customize_Sub_Pages_Control($wp_customize, 'intro_slide_five', array(
+//        'label' => __('Carousel item five', 'consult'),
+//        'section' => 'intro_slider',
+//        'settings' => 'intro_slide_five',
+//        'type' => 'select'
+//    )));
 
 //------------------------end intro---------------------------------//
 

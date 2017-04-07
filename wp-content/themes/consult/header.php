@@ -80,9 +80,8 @@
             <!--intro-->
             <h2 class="site-title site-title-light">
                 <span class="site-title-less"><?php echo get_theme_mod('intro_title'); ?></span>
-                <?php if (is_front_page()) { echo get_theme_mod('intro_description');}  ?>
+                <?php  echo get_theme_mod('intro_description'); ?>
             </h2>
-
 
             <div class="intro-slide">
                 <?php

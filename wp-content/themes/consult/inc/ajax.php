@@ -12,7 +12,7 @@
 function true_load_posts()
 {
     $args = unserialize(stripslashes($_POST['query']));
-    $args['paged'] = $_POST['page'] +1 ; // следующая страница
+    $args['paged'] = $_POST['page'] +1 ;
     $projects_query = new WP_Query($args);
     $result = '';
     $counter = 0;
@@ -20,6 +20,8 @@ function true_load_posts()
              while( $projects_query->have_posts() ) : $projects_query->the_post();
              global $post;
                  $counter++;
+                $pjwork= CFS()->get('check_show');
+                if($pjwork==1) :
              $post_terms = get_the_terms($post->ID, 'works');
              $post_terms_names = array_map( function($term) {
                  return $term->name;
@@ -28,7 +30,7 @@ function true_load_posts()
 
              $result .=
              '<li class="project-list-item col-md-6">
-                 <p class="meta-title">' . $post_terms_names . '</p>
+                 <p class="meta-title"><a href="'. get_the_permalink(get_the_ID()) .'" >' . $post_terms_names . '</a></p>
                  <ul class="project-img-slide">';
              if (has_post_thumbnail()) {
                  $result .= get_the_post_thumbnail();
@@ -44,7 +46,7 @@ function true_load_posts()
             <p class="description description-light">' . get_the_content() . '</p>
         </div>
         </li>';
-    endwhile; endif;
+        endif; endwhile; endif;
     wp_reset_postdata();
 
     echo $result;
